@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080C14"/>
+      <stop offset="100%" style="stop-color:#0c0820"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00D8FF"/>
+      <stop offset="100%" style="stop-color:#A86BFF"/>
+    </linearGradient>
+    <filter id="f1"><feGaussianBlur stdDeviation="1" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="64" height="64" fill="url(#bg)" rx="12"/>
+  <rect width="64" height="64" fill="none" stroke="#00D8FF" stroke-width="1" stroke-opacity="0.2" rx="12"/>
+  <path d="M6 3 L3 3 L3 6" fill="none" stroke="#00D8FF" stroke-width="1" opacity="0.4"/>
+  <path d="M58 3 L61 3 L61 6" fill="none" stroke="#A86BFF" stroke-width="1" opacity="0.4"/>
+  <path d="M6 61 L3 61 L3 58" fill="none" stroke="#A86BFF" stroke-width="1" opacity="0.4"/>
+  <path d="M58 61 L61 61 L61 58" fill="none" stroke="#00D8FF" stroke-width="1" opacity="0.4"/>
+  <!-- D icon -->
+  <circle cx="32" cy="32" r="18" fill="none" stroke="url(#glow)" stroke-width="1.2" opacity="0.2"/>
+  <circle cx="32" cy="32" r="12" fill="none" stroke="url(#glow)" stroke-width="1" opacity="0.4"/>
+  <path d="M22 22 Q32 16 42 22 Q48 27 42 42 Q32 48 22 42 Q16 35 22 22Z" fill="none" stroke="url(#glow)" stroke-width="1.2" opacity="0.4"/>
+  <text x="32" y="37" font-family="'Poppins','Arial',sans-serif" font-size="16" font-weight="900" fill="url(#glow)" text-anchor="middle" filter="url(#f1)">D</text>
+  <circle cx="22" cy="22" r="2" fill="#00D8FF" opacity="0.6" filter="url(#f1)"/>
+  <circle cx="42" cy="22" r="2" fill="#A86BFF" opacity="0.6" filter="url(#f1)"/>
+</svg>

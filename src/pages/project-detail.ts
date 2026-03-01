@@ -9,6 +9,7 @@ const PROJECTS: Record<string, any> = {
     // ⚠️ tokenAddr/tokenKey 는 sheet-tokens.ts 에서 관리 (Single Source of Truth)
     contractAddress: '', // runtime 에 sheet-tokens 에서 주입됨
     tokenKey: '',        // runtime 에 sheet-tokens 에서 주입됨
+    logoBase: '/static/logos/ailink',
     sourceCodeUrl: 'https://github.com/vinsenzo83/ailink-web/archive/refs/heads/main.zip',
     urls: { production: 'https://aichainlabs.xyz', pages: 'https://ailink-web.pages.dev', github: 'https://github.com/vinsenzo83/ailink-web', bscscan: 'https://bscscan.com/token/0x33c5502261c589a2EC4B1a6C4350aBF60ef47254', twitter: 'https://x.com/AiLink_Official', telegram: 'https://t.me/AiLink_Official' },
     team: [{ name: 'Alex Kim', role: 'CEO' }, { name: 'Sophia Nguyen', role: 'CTO' }, { name: 'Daniel Park', role: 'CMO' }],
@@ -42,7 +43,7 @@ const PROJECTS: Record<string, any> = {
     category: 'AI + NFT', color: '#8b5cf6',
     contractAddress: '',
     tokenKey: '',
-    logoBase: 'https://davinci-ai.pages.dev/static',
+    logoBase: '/static/logos/davinci',
     sourceCodeUrl: 'https://github.com/vinsenzo83/davinci-ai/archive/refs/heads/main.zip',
     urls: { production: 'https://davinciai.io', pages: 'https://davinci-ai.pages.dev', github: 'https://github.com/vinsenzo83/davinci-ai', twitter: 'https://x.com/DaVinciAiZ', telegram: 'https://t.me/DaVinciAiZ' },
     team: [{ name: 'Leonardo Chen', role: 'CEO' }, { name: 'Aria Nakamoto', role: 'CTO' }, { name: 'Marcus Rivera', role: 'CCO' }, { name: 'Yuki Tanaka', role: 'Head of Partnerships' }],
@@ -78,7 +79,7 @@ const PROJECTS: Record<string, any> = {
     category: 'AI + DeFi Signal', color: '#10b981',
     contractAddress: '',  // 토큰 미발행 — TGE Q2 2026 이후 업데이트
     tokenKey: '',
-    logoBase: 'https://zentarai.pages.dev/static',
+    logoBase: '/static/logos/zentarai',
     sourceCodeUrl: 'https://github.com/vinsenzo83/zentarai/archive/refs/heads/main.zip',
     urls: {
       production: 'https://zentarai.pages.dev',
@@ -282,28 +283,57 @@ export function projectDetailPage(id: string): string {
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem;">
 
       ${p.logoBase ? `
-      <!-- Logo Downloads -->
-      <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 0.75rem; padding: 1rem;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem;">
-          <img src="${p.logoBase}/logo-icon.svg" alt="${p.name} Logo" style="width:36px;height:36px;border-radius:8px;" onerror="this.style.display='none'"/>
-          <div>
-            <div style="font-size: 0.7rem; color: #34d399; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700;"><i class="fas fa-images"></i> Official Logo Kit</div>
-            <div style="font-size:0.72rem;color:#64748b;">SVG format — free to use</div>
+      <!-- Logo Downloads — full-width -->
+      <div style="grid-column: 1 / -1; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 0.75rem; padding: 1.25rem;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:1rem;">
+          <i class="fas fa-images" style="color:${p.color};font-size:0.85rem;"></i>
+          <span style="font-size:0.75rem;font-weight:700;color:white;text-transform:uppercase;letter-spacing:0.08em;">Official Logo Kit</span>
+          <span style="font-size:0.68rem;color:#475569;margin-left:4px;">SVG · same assets as project homepage</span>
+        </div>
+        <!-- 3 logo previews -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;margin-bottom:1rem;">
+          <!-- Square -->
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:0.6rem;padding:0.75rem;display:flex;flex-direction:column;align-items:center;gap:0.6rem;">
+            <div style="width:80px;height:80px;display:flex;align-items:center;justify-content:center;">
+              <img src="${p.logoBase}/logo-square.svg" alt="${p.name} Square Logo"
+                   style="max-width:80px;max-height:80px;width:auto;height:auto;"
+                   onerror="this.outerHTML='<div style=&quot;width:80px;height:80px;background:rgba(255,255,255,0.05);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#475569;&quot;>preview</div>'"/>
+            </div>
+            <div style="font-size:0.7rem;color:#64748b;text-align:center;">1:1 Square<br><span style="color:#475569;font-size:0.65rem;">200 × 200</span></div>
+            <button onclick="dlLogo('${p.logoBase}/logo-square.svg','${p.codename}-logo-square.svg')"
+               style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:${p.color};border:1px solid ${p.color}40;border-radius:5px;padding:5px 12px;text-decoration:none;background:${p.color}0d;width:100%;justify-content:center;cursor:pointer;">
+              <i class="fas fa-download" style="font-size:0.62rem;"></i> Download
+            </button>
+          </div>
+          <!-- Horizontal -->
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:0.6rem;padding:0.75rem;display:flex;flex-direction:column;align-items:center;gap:0.6rem;">
+            <div style="width:100%;height:80px;display:flex;align-items:center;justify-content:center;">
+              <img src="${p.logoBase}/logo-horizontal.svg" alt="${p.name} Horizontal Logo"
+                   style="max-width:100%;max-height:80px;width:auto;height:auto;"
+                   onerror="this.outerHTML='<div style=&quot;width:100%;height:80px;background:rgba(255,255,255,0.05);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#475569;&quot;>preview</div>'"/>
+            </div>
+            <div style="font-size:0.7rem;color:#64748b;text-align:center;">Horizontal<br><span style="color:#475569;font-size:0.65rem;">380 × 80</span></div>
+            <button onclick="dlLogo('${p.logoBase}/logo-horizontal.svg','${p.codename}-logo-horizontal.svg')"
+               style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:${p.color};border:1px solid ${p.color}40;border-radius:5px;padding:5px 12px;text-decoration:none;background:${p.color}0d;width:100%;justify-content:center;cursor:pointer;">
+              <i class="fas fa-download" style="font-size:0.62rem;"></i> Download
+            </button>
+          </div>
+          <!-- Icon -->
+          <div style="background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.06);border-radius:0.6rem;padding:0.75rem;display:flex;flex-direction:column;align-items:center;gap:0.6rem;">
+            <div style="width:64px;height:64px;margin:8px 0;display:flex;align-items:center;justify-content:center;">
+              <img src="${p.logoBase}/logo-icon.svg" alt="${p.name} Icon Logo"
+                   style="max-width:64px;max-height:64px;width:auto;height:auto;"
+                   onerror="this.outerHTML='<div style=&quot;width:64px;height:64px;background:rgba(255,255,255,0.05);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:#475569;&quot;>preview</div>'"/>
+            </div>
+            <div style="font-size:0.7rem;color:#64748b;text-align:center;">Icon<br><span style="color:#475569;font-size:0.65rem;">64 × 64</span></div>
+            <button onclick="dlLogo('${p.logoBase}/logo-icon.svg','${p.codename}-logo-icon.svg')"
+               style="display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;font-weight:600;color:${p.color};border:1px solid ${p.color}40;border-radius:5px;padding:5px 12px;text-decoration:none;background:${p.color}0d;width:100%;justify-content:center;cursor:pointer;">
+              <i class="fas fa-download" style="font-size:0.62rem;"></i> Download
+            </button>
           </div>
         </div>
-        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
-          <a href="${p.logoBase}/logo-square.svg" download="${p.codename}-logo-square.svg"
-             style="display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;font-weight:600;color:#34d399;border:1px solid rgba(52,211,153,0.3);border-radius:6px;padding:5px 10px;text-decoration:none;background:rgba(52,211,153,0.06);">
-            <i class="fas fa-download" style="font-size:0.65rem;"></i> 1:1
-          </a>
-          <a href="${p.logoBase}/logo-horizontal.svg" download="${p.codename}-logo-horizontal.svg"
-             style="display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;font-weight:600;color:#34d399;border:1px solid rgba(52,211,153,0.3);border-radius:6px;padding:5px 10px;text-decoration:none;background:rgba(52,211,153,0.06);">
-            <i class="fas fa-download" style="font-size:0.65rem;"></i> Horizontal
-          </a>
-          <a href="${p.logoBase}/logo-icon.svg" download="${p.codename}-logo-icon.svg"
-             style="display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;font-weight:600;color:#34d399;border:1px solid rgba(52,211,153,0.3);border-radius:6px;padding:5px 10px;text-decoration:none;background:rgba(52,211,153,0.06);">
-            <i class="fas fa-download" style="font-size:0.65rem;"></i> Icon
-          </a>
+        <div style="font-size:0.68rem;color:#334155;display:flex;align-items:center;gap:5px;">
+          <i class="fas fa-info-circle"></i> These are the official brand assets used on <a href="${p.urls?.production || p.urls?.pages || '#'}" target="_blank" style="color:${p.color};text-decoration:none;">${p.name} homepage</a>. All files are SVG vector format.
         </div>
       </div>` : ''}
 
@@ -372,6 +402,20 @@ new Chart(ctx, {
     plugins: { legend: { position: 'right', labels: { color: '#94a3b8', font: { size: 10 }, padding: 8 } } }
   }
 });
+
+function dlLogo(url, filename) {
+  fetch(url)
+    .then(function(r){ return r.blob(); })
+    .then(function(blob){
+      var a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    })
+    .catch(function(){ window.open(url, '_blank'); });
+}
 
 function copyAddr(btn) {
   var val = btn.dataset.val || '';
