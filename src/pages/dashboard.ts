@@ -770,7 +770,7 @@ export function dashboardPage(): string {
 
 <!-- Footer -->
 <footer style="border-top: 1px solid rgba(255,255,255,0.06); padding: 1.5rem; text-align: center; color: #475569; font-size: 0.8rem; margin-top: 3rem;">
-  Blockchain Portfolio Manager · vinsenzo83 · Built with Hono + Cloudflare Pages
+  Blockchain Portfolio Manager v3.0.0 · vinsenzo83 · Built with Hono + Cloudflare Pages
 </footer>
 
 </div><!-- end main-wrap -->

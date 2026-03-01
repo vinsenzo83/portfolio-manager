@@ -1,132 +1,74 @@
-# Blockchain Portfolio Manager
+# Blockchain Portfolio Manager v3.0.0
 
-> 다수의 블록체인 프로젝트를 트리 형태로 관리하는 대시보드
+## 프로젝트 개요
+- **이름**: Blockchain Portfolio Manager
+- **버전**: v3.0.0
+- **소유자**: vinsenzo83
+- **목적**: 다수의 블록체인 프로젝트를 한 곳에서 관리하는 비공개 포트폴리오 관리 도구
 
----
+## 배포 주소
+- **Cloudflare Pages**: https://portfolio-manager-1jr.pages.dev
+- **GitHub**: https://github.com/vinsenzo83/portfolio-manager
 
-## 📌 Project Overview
+## 접속 방법
+- 홈페이지 접속 시 비밀번호 입력 필요
+- 비밀번호: `rhkdtp00!!`
 
-| Field | Value |
-|-------|-------|
-| **Name** | Blockchain Portfolio Manager |
-| **Codename** | portfolio-manager |
-| **Version** | v1.0.0 |
-| **Owner** | vinsenzo83 |
-| **Status** | 🟢 Active |
-| **Created** | 2026-03-01 |
+## 주요 기능
 
----
+### 탭 구성
+| 탭 | 설명 |
+|---|---|
+| Tree View | 프로젝트 트리 구조 시각화 |
+| Grid View | 그리드 카드 뷰 |
+| Sheet | 22개 프로젝트 스프레드시트 관리 |
+| Common Features | 공통 기술스택 및 컴포넌트 |
+| Required Fields | 프로젝트 필수 항목 체크리스트 |
 
-## 🌐 Live URLs
+### Sheet 탭 기능
+- 22개 프로젝트 데이터 (localStorage 자동저장)
+- 검색 / 상태 필터 / 그룹 필터
+- 행 추가 / 편집(모달) / 삭제
+- CSV 내보내기 (UTF-8 BOM)
+- **카테고리(컬럼 그룹) 추가/삭제** 기능
+- 비밀번호 / 토큰키 평문 표시
 
-| Type | URL |
-|------|-----|
-| **Cloudflare Pages** | https://portfolio-manager-1jr.pages.dev |
-| **GitHub** | https://github.com/vinsenzo83/portfolio-manager |
-| **Sandbox** | https://3001-ifclimfdh50ocesbammad-cbeee0f9.sandbox.novita.ai |
+### 프로젝트 상세 페이지 (`/project/:id`)
+- Token Information (Symbol, Supply, TGE 등)
+- Token Allocation 도넛 차트
+- Pages, Roadmap, Team, Partners
+- **Downloads & Assets 카드**
+  - 소스코드 ZIP 다운로드 (GitHub main)
+  - Token Address 평문 표시 + BSCScan 링크 + Copy
+  - Token Private Key 평문 표시 + Copy
 
----
+## 라우트 목록
+| 경로 | 설명 |
+|---|---|
+| `/` | 메인 대시보드 (비밀번호 게이트) |
+| `/project/ailink` | AILINK 프로젝트 상세 |
+| `/project/davinci` | DaVinci AI 프로젝트 상세 |
+| `/add` | 프로젝트 추가 |
+| `/template` | README 템플릿 |
+| `/api/health` | 헬스체크 |
+| `/api/projects` | 프로젝트 목록 (JSON) |
 
-## 🎯 Features
+## 기술 스택
+- **Framework**: Hono v4 (TypeScript)
+- **Build**: Vite v6
+- **Deploy**: Cloudflare Pages + Wrangler v4
+- **Frontend**: Tailwind CSS CDN, FontAwesome 6.4, Chart.js
 
-### Tree View (트리 뷰)
-- vinsenzo83 루트 노드를 중심으로 모든 프로젝트가 트리 구조로 표시
-- AILINK, DaVinci AI 프로젝트 카드 (진행률, 페이지 목록, 링크 포함)
-- 새 프로젝트 추가 슬롯
+## 버전 히스토리
+| 버전 | 내용 |
+|---|---|
+| v3.0.0 | 비밀번호 게이트, 마스킹 제거, Downloads&Assets 카드, 카테고리 관리, 페이지 너비 확대 |
+| v2.0.0 | Sheet 탭 추가, 22개 프로젝트, 24컬럼, CSV 내보내기 |
+| v1.0.0 | 최초 배포 - AILINK + DaVinci AI 트리뷰 대시보드 |
 
-### Grid View (그리드 뷰)
-- 프로젝트 카드 갤러리 뷰
-- 토큰 정보, 진행률, 링크 요약
-
-### Common Features (공통 기능)
-- 두 프로젝트의 공통 기술 스택 분석
-- 공통 페이지 목록
-- 공통 컴포넌트 목록
-- 공통 배포 구조
-
-### Required Fields (필수 항목)
-- 8개 카테고리 × 5-7개 항목의 필수/권장 체크리스트
-- 모든 신규 블록체인 프로젝트에 적용할 표준 기준
-
-### README Template (README 템플릿)
-- 표준 README.md 템플릿 (클립보드 복사 기능)
-- wrangler.jsonc 표준 설정
-- ecosystem.config.cjs PM2 표준 설정
-
----
-
-## 📄 Pages
-
-| Path | Description |
-|------|-------------|
-| `/` | Dashboard (Tree/Grid/Common/Required/Template 탭) |
-| `/project/ailink` | AILINK 프로젝트 상세 페이지 |
-| `/project/davinci` | DaVinci AI 프로젝트 상세 페이지 |
-| `/add` | 새 프로젝트 추가 폼 |
-| `/template` | README 표준 템플릿 |
-| `/api/projects` | 전체 프로젝트 목록 API |
-| `/api/projects/:id` | 개별 프로젝트 API |
-| `/api/health` | 헬스 체크 |
-
----
-
-## 📊 Managed Projects
-
-| Project | Token | Chain | TGE | Status |
-|---------|-------|-------|-----|--------|
-| AILINK | ALINK | BNB Chain | Q4 2025 | Active |
-| DaVinci AI | DAVINCI | BNB Chain | Q4 2025 | Active |
-
----
-
-## 🔑 Common Required Fields (표준화된 필수 항목)
-
-모든 블록체인 프로젝트 README에 반드시 포함해야 할 8가지 카테고리:
-
-1. **프로젝트 정체성**: Name, Codename, Version, Owner, Status, Description
-2. **토큰 정보**: Symbol, Supply, Chain, Contract, TGE, DEX
-3. **URL & 소셜**: Production, Pages, GitHub, Twitter, Telegram
-4. **배포 정보**: Platform, Build Command, Output Dir, Branch
-5. **토큰노믹스**: Allocation Table, Cliff, Vesting, Chart
-6. **팀 & 파트너**: Core Team, Roles, Partners List
-7. **페이지 목록**: Home, Login, MyPage, Whitepaper, Vesting, Legal
-8. **로드맵**: Phases, Periods, Status, Key Items
-
----
-
-## 🛠️ Tech Stack
-
-| Layer | Technology |
-|-------|-----------|
-| **Hosting** | Cloudflare Pages |
-| **Framework** | Hono v4 (TypeScript) |
-| **Build** | Vite v6 |
-| **Styling** | Tailwind CSS CDN |
-| **Charts** | Chart.js |
-| **Icons** | Font Awesome 6.4 |
-
----
-
-## 🚀 Deployment
-
-```bash
-# Development
-cd portfolio-manager && npm install
-npm run build && pm2 start ecosystem.config.cjs  # port 3001
-
-# Deploy to production
-npm run build
-npx wrangler pages deploy dist --project-name portfolio-manager
-```
-
----
-
-## 📦 Backup History
-
-| Date | Version | Notes |
-|------|---------|-------|
-| 2026-03-01 | v1.0.0 | Initial release |
-
----
-
-© 2025 vinsenzo83. Built with Hono + Cloudflare Pages.
+## 배포 정보
+- **플랫폼**: Cloudflare Pages
+- **빌드 명령**: `npm run build`
+- **출력 디렉토리**: `dist/`
+- **상태**: ✅ Active
+- **최종 업데이트**: 2026-03-01

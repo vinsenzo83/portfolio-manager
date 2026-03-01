@@ -37,6 +37,9 @@ const PROJECTS: Record<string, any> = {
     chain: 'BNB Chain', token: 'DAVINCI', supply: '8,888,888,888', tge: 'Q4 2025',
     description: 'Web3-native AI agent creative platform with NFT Marketplace and DAO governance',
     category: 'AI + NFT', color: '#8b5cf6',
+    contractAddress: '',
+    tokenKey: '',
+    sourceCodeUrl: 'https://github.com/vinsenzo83/davinci-ai/archive/refs/heads/main.zip',
     urls: { production: 'https://davinciai.io', pages: 'https://davinci-ai.pages.dev', github: 'https://github.com/vinsenzo83/davinci-ai', twitter: 'https://x.com/DaVinciAiZ', telegram: 'https://t.me/DaVinciAiZ' },
     team: [{ name: 'Leonardo Chen', role: 'CEO' }, { name: 'Aria Nakamoto', role: 'CTO' }, { name: 'Marcus Rivera', role: 'CCO' }, { name: 'Yuki Tanaka', role: 'Head of Partnerships' }],
     tokenomics: [

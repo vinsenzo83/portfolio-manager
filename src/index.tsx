@@ -33,7 +33,7 @@ app.get('/api/projects/:id', (c) => {
 })
 
 // Health check
-app.get('/api/health', (c) => c.json({ status: 'ok', service: 'Blockchain Portfolio Manager', version: '1.0.0' }))
+app.get('/api/health', (c) => c.json({ status: 'ok', service: 'Blockchain Portfolio Manager', version: '3.0.0' }))
 
 // Projects data (embedded)
 const PROJECTS_DATA = [
