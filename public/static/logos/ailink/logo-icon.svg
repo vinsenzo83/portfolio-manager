@@ -1,27 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#080f1a"/>
-      <stop offset="100%" style="stop-color:#0a1520"/>
+    <linearGradient id="navbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#003BFF"/>
+      <stop offset="100%" style="stop-color:#31F2C3"/>
     </linearGradient>
-    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#31F2C3"/>
-      <stop offset="100%" style="stop-color:#00e5b3"/>
-    </linearGradient>
-    <filter id="f1"><feGaussianBlur stdDeviation="1" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="1" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  <rect width="64" height="64" fill="url(#bg)" rx="12"/>
-  <rect width="64" height="64" fill="none" stroke="#31F2C3" stroke-width="1" stroke-opacity="0.25" rx="12"/>
-  <path d="M6 3 L3 3 L3 6" fill="none" stroke="#31F2C3" stroke-width="1" opacity="0.5"/>
-  <path d="M58 3 L61 3 L61 6" fill="none" stroke="#31F2C3" stroke-width="1" opacity="0.5"/>
-  <path d="M6 61 L3 61 L3 58" fill="none" stroke="#31F2C3" stroke-width="1" opacity="0.5"/>
-  <path d="M58 61 L61 61 L61 58" fill="none" stroke="#31F2C3" stroke-width="1" opacity="0.5"/>
-  <!-- Chain links -->
-  <circle cx="24" cy="32" r="9" fill="none" stroke="#31F2C3" stroke-width="1.5" opacity="0.3"/>
-  <circle cx="24" cy="32" r="5" fill="none" stroke="#31F2C3" stroke-width="1.2" opacity="0.7"/>
-  <circle cx="40" cy="32" r="9" fill="none" stroke="#31F2C3" stroke-width="1.5" opacity="0.3"/>
-  <circle cx="40" cy="32" r="5" fill="none" stroke="#31F2C3" stroke-width="1.2" opacity="0.7"/>
-  <rect x="27" y="29" width="10" height="6" rx="3" fill="none" stroke="#31F2C3" stroke-width="1.2" opacity="0.8"/>
-  <circle cx="24" cy="32" r="2" fill="#31F2C3" opacity="0.9" filter="url(#f1)"/>
-  <circle cx="40" cy="32" r="2" fill="#31F2C3" opacity="0.9" filter="url(#f1)"/>
+  <!-- Background: gradient rounded square -->
+  <rect width="64" height="64" fill="url(#navbg)" rx="14"/>
+  <!-- Node icon: center circle + 8 lines (exact navbar SVG scaled from 20→64) -->
+  <!-- scale factor: 64/20 = 3.2, center shift: 32 - 10*3.2 = 0, so multiply coords by 3.2 -->
+  <!-- center dot -->
+  <circle cx="32" cy="32" r="6" fill="white" filter="url(#glow)"/>
+  <!-- 4 main lines (N/S/E/W) -->
+  <line x1="32" y1="3.2"  x2="32" y2="22.4" stroke="white" stroke-width="3"   stroke-linecap="round"/>
+  <line x1="32" y1="41.6" x2="32" y2="60.8" stroke="white" stroke-width="3"   stroke-linecap="round"/>
+  <line x1="3.2"  y1="32" x2="22.4" y2="32" stroke="white" stroke-width="3"   stroke-linecap="round"/>
+  <line x1="41.6" y1="32" x2="60.8" y2="32" stroke="white" stroke-width="3"   stroke-linecap="round"/>
+  <!-- 4 diagonal lines (NW/NE/SW/SE) -->
+  <line x1="10.24" y1="10.24" x2="23.04" y2="23.04" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="40.96" y1="40.96" x2="53.76" y2="53.76" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="53.76" y1="10.24" x2="40.96" y2="23.04" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="23.04" y1="40.96" x2="10.24" y2="53.76" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
 </svg>
