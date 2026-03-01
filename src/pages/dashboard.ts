@@ -341,15 +341,15 @@ export function dashboardPage(): string {
     <!-- Overview Stats -->
     <div class="grid-3" style="margin-bottom: 2rem;">
       <div class="stat-card">
-        <div style="font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">2</div>
+        <div style="font-size: 2rem; font-weight: 800; background: linear-gradient(135deg, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">3</div>
         <div style="color: #94a3b8; font-size: 0.8rem; margin-top: 0.25rem;">Active Projects</div>
       </div>
       <div class="stat-card">
-        <div style="font-size: 2rem; font-weight: 800; color: #22c55e;">28.9B</div>
+        <div style="font-size: 2rem; font-weight: 800; color: #22c55e;">38.9B</div>
         <div style="color: #94a3b8; font-size: 0.8rem; margin-top: 0.25rem;">Total Token Supply</div>
       </div>
       <div class="stat-card">
-        <div style="font-size: 2rem; font-weight: 800; color: #fbbf24;">Q4 2025</div>
+        <div style="font-size: 2rem; font-weight: 800; color: #fbbf24;">Q2 2026</div>
         <div style="color: #94a3b8; font-size: 0.8rem; margin-top: 0.25rem;">Next TGE Date</div>
       </div>
     </div>
@@ -484,6 +484,60 @@ export function dashboardPage(): string {
             </a>
           </div>
 
+          <!-- ZENTARAI Branch -->
+          <div class="tree-branch">
+            <a href="/project/zentarai" style="text-decoration: none;">
+              <div class="project-card" style="--card-color: #10b981;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
+                  <div>
+                    <div style="font-size: 1.1rem; font-weight: 700; color: white;">ZentarAI</div>
+                    <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;">zentarai · v1.0.0</div>
+                  </div>
+                  <span class="status-badge status-active">
+                    <span style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></span>
+                    Active
+                  </span>
+                </div>
+
+                <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem; line-height: 1.5;">AI-powered predictive intelligence platform — processes 500+ on-chain/off-chain data streams via ML models</div>
+
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                  <span class="feature-tag"><i class="fas fa-coins"></i> ZNTR</span>
+                  <span class="feature-tag">10B Supply</span>
+                  <span class="feature-tag">AI + DeFi Signal</span>
+                </div>
+
+                <div style="margin-bottom: 0.75rem;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #64748b; margin-bottom: 4px;">
+                    <span>Progress</span><span>65%</span>
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 65%; background: linear-gradient(90deg, #10b981, #34d399);"></div>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 0.5rem; font-size: 0.75rem;">
+                  <a href="https://zentarai.xyz" target="_blank" style="color: #10b981; text-decoration: none;"><i class="fas fa-globe"></i> zentarai.xyz</a>
+                  <span style="color: #334155;">·</span>
+                  <span style="color: #64748b;">8 pages</span>
+                  <span style="color: #334155;">·</span>
+                  <span style="color: #64748b;">TGE Q2 2026</span>
+                </div>
+
+                <!-- Sub-pages tree -->
+                <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);">
+                  <div style="font-size: 0.7rem; color: #64748b; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.05em;">Pages</div>
+                  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3px;">
+                    ${[['/', 'Home'], ['/login', 'Login'], ['/mypage', 'Dashboard'], ['/vesting', 'Vesting'], ['/whitepaper', 'Whitepaper'], ['/legal/*', 'Legal']].map(([path, name]) => `
+                    <div style="font-size: 0.7rem; color: #94a3b8; padding: 2px 4px; display: flex; align-items: center; gap: 4px;">
+                      <span style="color: #10b981; font-size: 0.6rem;">●</span> ${name}
+                    </div>`).join('')}
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+
         </div><!-- end tree-children -->
 
         <!-- Future Project slot -->
@@ -551,6 +605,31 @@ export function dashboardPage(): string {
           <div style="margin-top: 1rem;">
             <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #64748b; margin-bottom: 3px;"><span>Completion</span><span>68%</span></div>
             <div class="progress-bar"><div class="progress-fill" style="width:68%;background:linear-gradient(90deg,#8b5cf6,#a78bfa);"></div></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- ZENTARAI Grid Card -->
+      <a href="/project/zentarai" style="text-decoration: none;">
+        <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(16,185,129,0.2); border-radius: 1rem; padding: 1.5rem; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(16,185,129,0.5)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(16,185,129,0.2)'">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #059669, #10b981); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <i class="fas fa-brain" style="color: white;"></i>
+            </div>
+            <span class="status-badge status-active"><span style="width:6px;height:6px;background:#22c55e;border-radius:50%;"></span> Active</span>
+          </div>
+          <h3 style="font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.25rem;">ZentarAI</h3>
+          <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 1rem;">codename: zentarai · v1.0.0</p>
+          <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 1rem;">AI predictive intelligence platform</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; font-size: 0.75rem;">
+            <div><span style="color:#64748b;">Token</span><br><span style="color:#6ee7b7;font-weight:600;">ZNTR</span></div>
+            <div><span style="color:#64748b;">Supply</span><br><span style="color:white;font-weight:600;">10B</span></div>
+            <div><span style="color:#64748b;">Chain</span><br><span style="color:white;">BNB Chain</span></div>
+            <div><span style="color:#64748b;">TGE</span><br><span style="color:#fbbf24;">Q2 2026</span></div>
+          </div>
+          <div style="margin-top: 1rem;">
+            <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #64748b; margin-bottom: 3px;"><span>Completion</span><span>65%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width:65%;background:linear-gradient(90deg,#10b981,#34d399);"></div></div>
           </div>
         </div>
       </a>
