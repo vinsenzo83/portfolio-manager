@@ -155,12 +155,132 @@ export function dashboardPage(): string {
       .project-card { width: 100%; max-width: 360px; }
     }
 
-    .tab-btn { padding: 0.5rem 1.25rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; color: #94a3b8; border: 1px solid transparent; }
+    .tab-btn { padding: 0.5rem 1.25rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; transition: all 0.2s; color: #94a3b8; border: 1px solid transparent; cursor: pointer; }
     .tab-btn.active { background: rgba(59,130,246,0.2); border-color: rgba(59,130,246,0.4); color: #93c5fd; }
 
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     @media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+
+    /* ══ SHEET STYLES ══ */
+    .sh-toolbar {
+      display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
+      padding: .75rem 1rem; background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07); border-radius: .6rem;
+      margin-bottom: .75rem;
+    }
+    .sh-search {
+      display: flex; align-items: center; gap: .4rem;
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: .4rem; padding: .3rem .7rem; flex: 1; min-width: 200px; max-width: 280px;
+    }
+    .sh-search input { background: none; border: none; outline: none; color: #e2e8f0; font-size: .8rem; width: 100%; }
+    .sh-search input::placeholder { color: #475569; }
+    .sh-search i { color: #475569; font-size: .75rem; }
+    .sh-sel {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: .4rem; padding: .3rem .6rem; color: #e2e8f0; font-size: .78rem; outline: none; cursor: pointer;
+    }
+    .sh-btn-primary {
+      background: linear-gradient(135deg,#6366f1,#8b5cf6); color: white;
+      padding: .32rem .9rem; border-radius: .4rem; font-size: .78rem; font-weight: 600;
+      border: none; cursor: pointer; display: flex; align-items: center; gap: .35rem;
+    }
+    .sh-btn-ghost {
+      background: rgba(255,255,255,.06); color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,.1);
+      padding: .32rem .9rem; border-radius: .4rem; font-size: .78rem; cursor: pointer;
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .sh-stats { display: flex; gap: 1rem; margin-left: auto; flex-wrap: wrap; }
+    .sh-stat { text-align: center; }
+    .sh-sn { font-size: .95rem; font-weight: 700; }
+    .sh-sl { font-size: .62rem; color: #64748b; text-transform: uppercase; letter-spacing: .04em; }
+
+    .sh-wrap { overflow-x: auto; overflow-y: auto; max-height: calc(100vh - 220px); border-radius: .5rem; border: 1px solid rgba(255,255,255,.07); }
+    .sh-table { border-collapse: collapse; width: 100%; }
+    .sh-table thead { position: sticky; top: 0; z-index: 10; }
+    .sh-grp th {
+      background: #0d0d20; padding: .35rem .6rem; font-size: .67rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em; text-align: center;
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .sh-table thead tr:last-child th {
+      background: #111124; padding: .4rem .6rem; font-size: .69rem; font-weight: 600;
+      white-space: nowrap; border: 1px solid rgba(255,255,255,.06); color: #94a3b8;
+    }
+    .sh-tr td {
+      padding: .38rem .6rem; font-size: .75rem; border: 1px solid rgba(255,255,255,.05);
+      white-space: nowrap; background: #0a0a1a; color: #e2e8f0;
+    }
+    .sh-tr:hover td { background: rgba(99,102,241,.06); }
+    .sh-sold-r td { opacity: .55; }
+    .sh-badge {
+      display: inline-block; padding: 2px 8px; border-radius: 99px;
+      font-size: .65rem; font-weight: 700; border: 1px solid transparent;
+    }
+    .sh-green { background: rgba(34,197,94,.15); color: #4ade80; border-color: rgba(34,197,94,.3); }
+    .sh-red   { background: rgba(239,68,68,.15);  color: #f87171; border-color: rgba(239,68,68,.3); }
+    .sh-link  { color: #93c5fd; text-decoration: none; font-size: .73rem; }
+    .sh-link:hover { text-decoration: underline; }
+    .sh-pw {
+      cursor: pointer; font-family: monospace; font-size: .75rem;
+      color: #6366f1; border-bottom: 1px dashed #6366f150;
+    }
+    .sh-act { display: flex; gap: .3rem; }
+    .sh-btn-e, .sh-btn-d {
+      padding: .22rem .5rem; border-radius: .3rem; border: 1px solid transparent;
+      font-size: .7rem; cursor: pointer; line-height: 1;
+    }
+    .sh-btn-e { background: rgba(99,102,241,.15); color: #a5b4fc; border-color: rgba(99,102,241,.3); }
+    .sh-btn-d { background: rgba(239,68,68,.12);  color: #f87171; border-color: rgba(239,68,68,.25); }
+    .sh-btn-e:hover { background: rgba(99,102,241,.3); }
+    .sh-btn-d:hover { background: rgba(239,68,68,.3); }
+
+    /* ── MODAL ── */
+    .sh-modal-bg {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.75);
+      z-index: 9000; align-items: center; justify-content: center;
+    }
+    .sh-modal-bg.open { display: flex; }
+    .sh-modal-box {
+      background: #131326; border: 1px solid rgba(255,255,255,.12); border-radius: .75rem;
+      width: 96%; max-width: 700px; max-height: 90vh;
+      display: flex; flex-direction: column; box-shadow: 0 30px 80px rgba(0,0,0,.6);
+    }
+    .sh-modal-head {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .sh-modal-body {
+      padding: 1rem 1.25rem; overflow-y: auto; flex: 1;
+      display: grid; grid-template-columns: 1fr 1fr; gap: .65rem;
+    }
+    .sh-field label { display: block; font-size: .72rem; color: #94a3b8; margin-bottom: .25rem; font-weight: 500; }
+    .sh-field-group-head {
+      grid-column: 1/-1; font-size: .7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .08em; padding: .4rem 0 .2rem; border-bottom: 1px solid rgba(255,255,255,.07);
+      margin-top: .3rem;
+    }
+    .sh-field input, .sh-field select {
+      width: 100%; background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+      border-radius: .35rem; padding: .35rem .6rem; color: #e2e8f0; font-size: .8rem; outline: none;
+    }
+    .sh-field input:focus, .sh-field select:focus { border-color: #6366f1; }
+    .sh-modal-foot {
+      display: flex; justify-content: flex-end; gap: .5rem;
+      padding: .85rem 1.25rem; border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    /* ── TOAST ── */
+    .sh-toast {
+      position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: #1e1e38; border: 1px solid rgba(99,102,241,.4); color: #e2e8f0;
+      padding: .6rem 1.4rem; border-radius: .5rem; font-size: .82rem; font-weight: 500;
+      opacity: 0; transition: all .3s; pointer-events: none; z-index: 9999; white-space: nowrap;
+    }
+    .sh-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    .sh-toast.err  { border-color: rgba(239,68,68,.4); color: #f87171; }
   </style>
 </head>
 <body>
@@ -187,11 +307,12 @@ export function dashboardPage(): string {
 <div style="max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem;">
 
   <!-- Tab Navigation -->
-  <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap;">
-    <button class="tab-btn active" onclick="showTab('tree')"><i class="fas fa-sitemap mr-1"></i> Tree View</button>
-    <button class="tab-btn" onclick="showTab('grid')"><i class="fas fa-th-large mr-1"></i> Grid View</button>
-    <button class="tab-btn" onclick="showTab('common')"><i class="fas fa-layer-group mr-1"></i> Common Features</button>
-    <button class="tab-btn" onclick="showTab('required')"><i class="fas fa-clipboard-check mr-1"></i> Required Fields</button>
+  <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap;" id="tab-nav">
+    <button class="tab-btn active" id="tbtn-tree" onclick="showTab('tree',this)"><i class="fas fa-sitemap mr-1"></i> Tree View</button>
+    <button class="tab-btn" id="tbtn-grid" onclick="showTab('grid',this)"><i class="fas fa-th-large mr-1"></i> Grid View</button>
+    <button class="tab-btn" id="tbtn-sheet" onclick="showTab('sheet',this)"><i class="fas fa-table mr-1"></i> Sheet</button>
+    <button class="tab-btn" id="tbtn-common" onclick="showTab('common',this)"><i class="fas fa-layer-group mr-1"></i> Common Features</button>
+    <button class="tab-btn" id="tbtn-required" onclick="showTab('required',this)"><i class="fas fa-clipboard-check mr-1"></i> Required Fields</button>
     <a href="/template" class="tab-btn" style="text-decoration: none;"><i class="fas fa-file-code mr-1"></i> README Template</a>
   </div>
 
@@ -606,6 +727,11 @@ export function dashboardPage(): string {
     </div>
   </div>
 
+  <!-- ============ SHEET TAB ============ -->
+  <div id="tab-sheet" class="tab-content" style="display:none;">
+    <div id="sh-app"></div>
+  </div>
+
 </div><!-- end main content -->
 
 <!-- Footer -->
@@ -613,14 +739,406 @@ export function dashboardPage(): string {
   Blockchain Portfolio Manager · vinsenzo83 · Built with Hono + Cloudflare Pages
 </footer>
 
+<!-- ── Sheet: 편집 모달 ── -->
+<div id="sh-modal" class="sh-modal-bg">
+  <div class="sh-modal-box">
+    <div class="sh-modal-head">
+      <span id="sh-mt" style="font-weight:700;font-size:1rem;color:#e2e8f0">편집</span>
+      <button onclick="shClose()" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:1.2rem;line-height:1">✕</button>
+    </div>
+    <div class="sh-modal-body" id="sh-modal-fields"></div>
+    <div class="sh-modal-foot">
+      <button onclick="shClose()" class="sh-btn-ghost">취소</button>
+      <button onclick="shSave()" class="sh-btn-primary"><i class="fas fa-save"></i> 저장</button>
+    </div>
+  </div>
+</div>
+<div id="sh-toast" class="sh-toast"></div>
+
 <script>
-function showTab(name) {
-  document.querySelectorAll('.tab-content').forEach(el => el.style.display = 'none');
-  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-  const tab = document.getElementById('tab-' + name);
+/* -- TAB SWITCHER -- */
+function showTab(name, btn) {
+  document.querySelectorAll('.tab-content').forEach(function(el) { el.style.display = 'none'; });
+  document.querySelectorAll('.tab-btn').forEach(function(el) { el.classList.remove('active'); });
+  var tab = document.getElementById('tab-' + name);
   if (tab) tab.style.display = 'block';
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
+  if (name === 'sheet') shRender();
 }
+
+/* ========================================
+   SHEET  -  22개 프로젝트 관리 시트
+======================================== */
+var SH_KEY = 'pm_sheet_v1';
+
+/* : key /  /  / width */
+var SH_COLS = [
+  {k:'sim',       h:'SIM No.',      g:'기본',    w:90},
+  {k:'rank',      h:'매각순위',      g:'기본',    w:80},
+  {k:'followers', h:'팔로워',        g:'기본',    w:70},
+  {k:'devStatus', h:'개발상황',      g:'기본',    w:90},
+  {k:'posting',   h:'포스팅',        g:'기본',    w:70},
+  {k:'posts',     h:'포스트수',      g:'기본',    w:70},
+  {k:'xName',     h:'X 프로젝트명',  g:'X 계정',  w:110},
+  {k:'xAcc',      h:'X 계정',        g:'X 계정',  w:130},
+  {k:'xPass',     h:'X 비밀번호',    g:'X 계정',  w:100},
+  {k:'gName',     h:'G 프로젝트명',  g:'Google', w:110},
+  {k:'gAcc',      h:'Gmail',         g:'Google', w:160},
+  {k:'gPass',     h:'G 비밀번호',    g:'Google', w:100},
+  {k:'tgName',    h:'TG 프로젝트명', g:'Telegram',w:110},
+  {k:'tgLink',    h:'TG 링크',       g:'Telegram',w:160},
+  {k:'twName',    h:'TW 프로젝트명', g:'Twitter', w:110},
+  {k:'twLink',    h:'TW 링크',       g:'Twitter', w:160},
+  {k:'site',      h:'사이트',        g:'사이트/토큰',w:140},
+  {k:'tokenAddr', h:'Token Address', g:'사이트/토큰',w:160},
+  {k:'tokenKey',  h:'Token Key',     g:'사이트/토큰',w:120},
+  {k:'domainEmail',h:'도메인이메일', g:'기타',    w:160},
+  {k:'devDoc',    h:'개발문서',      g:'기타',    w:100},
+  {k:'exchange',  h:'거래소',        g:'거래소/매각',w:80},
+  {k:'sold',      h:'매각여부',      g:'거래소/매각',w:90},
+];
+
+/* () */
+var SH_GCOL = {
+  '기본':        '#6366f1',
+  'X 계정':      '#3b82f6',
+  'Google':      '#22c55e',
+  'Telegram':    '#06b6d4',
+  'Twitter':     '#8b5cf6',
+  '사이트/토큰': '#f59e0b',
+  '기타':        '#94a3b8',
+  '거래소/매각': '#ef4444',
+};
+
+/* 22 */
+var SH_DEF = [
+  {id:1,  sim:'',              rank:'매각완료', followers:'26k',  devStatus:'매각완료', posting:'',  posts:'',    xName:'mole',       xAcc:'@MoleSmash',       xPass:'rhkdtp00!!',  gName:'mole',       gAcc:'moletaptap@gmail.com',          gPass:'rhkdtp00!!',  tgName:'mole',       tgLink:'https://t.me/MoleOfficialchannel',  twName:'mole',       twLink:'https://x.com/MoleSmash',       site:'molesmash.xyz',    tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'mexc', sold:'매각완료'},
+  {id:2,  sim:'880 1601929592',rank:'매각완료', followers:'200',  devStatus:'매각완료', posting:'y', posts:'232', xName:'tonixai',    xAcc:'@TonixAiOfficial', xPass:'Abcd@1233',   gName:'tonnixai',   gAcc:'mrstefan45678@gmail.com',        gPass:'12345@Abcd',  tgName:'tonixai',    tgLink:'https://t.me/tonixaiOfficial',      twName:'tonixai',    twLink:'https://x.com/TonixAiOfficial', site:'tonixai.org',      tokenAddr:'0x91025973e28d2CC43C42A5b1A2308F5Fe4AAf436', tokenKey:'de935095fa09f9e198c6dcd48d72b42fd38db51cbc92013241d96a747afc8ae0', domainEmail:'', devDoc:'',                                                                                                                    exchange:'mexc', sold:'매각완료'},
+  {id:3,  sim:'',              rank:'',         followers:'',     devStatus:'완료',     posting:'y', posts:'98',  xName:'DaVinci AI', xAcc:'@DVinciAiZ',       xPass:'Abcd@1233',   gName:'DaVinci AI', gAcc:'davinciai59sala@gmail.com',      gPass:'Abcd@1233',   tgName:'DaVinci AI', tgLink:'https://t.me/DaVinciAiZ',           twName:'DaVinci AI', twLink:'https://x.com/DVinciAiZ',       site:'davinciai.io',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'https://docs.google.com/document/d/1tTYRudGDhRK91Mo81uRNdxfD6Mpc4FKWwJU8k8rgpWU/edit', exchange:'mexc', sold:''},
+  {id:4,  sim:'',              rank:'',         followers:'',     devStatus:'완료',     posting:'y', posts:'118', xName:'AiLink',     xAcc:'@AiLink_Official', xPass:'Abcd@1233',   gName:'AiLink',     gAcc:'ailinkofficial.net@gmail.com',   gPass:'Abcd@1233',   tgName:'AiLink',     tgLink:'https://t.me/AiLink_Official',      twName:'AiLink',     twLink:'https://x.com/AiLink_Official', site:'aichainlabs.xyz',  tokenAddr:'0x33c5502261c589a2EC4B1a6C4350aBF60ef47254', tokenKey:'d0c65aaa3ff528bb9c649b71b37d74691b7d283efbce04e7390df101a5709e20', domainEmail:'', devDoc:'https://docs.google.com/document/d/1p-Lk94S_KjtVfKo4W1cbqqhdkMkTvxc8JGEd4V-3IAc/edit', exchange:'mexc', sold:''},
+  {id:5,  sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'y', posts:'49',  xName:'visixion',   xAcc:'@visixion',        xPass:'Abcd@1234',   gName:'visixion',   gAcc:'mdrazzakcom@gmail.com',          gPass:'Abcd@1234',   tgName:'visixion',   tgLink:'https://t.me/visixion_official',    twName:'visixion',   twLink:'https://x.com/visixion',        site:'visixion.xyz',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'https://docs.google.com/document/d/1IWtQEXcwGAlEDDIiVPucllIeVrUAR-nIQ3u5cpwKpfA/edit', exchange:'mexc', sold:''},
+  {id:6,  sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'y', posts:'35',  xName:'mynforge',   xAcc:'@mynforge',        xPass:'Abcd@1234',   gName:'mynforge',   gAcc:'mynforge@gmail.com',            gPass:'Abcd@1234',   tgName:'mynforge',   tgLink:'https://t.me/mynforge',             twName:'mynforge',   twLink:'https://x.com/mynforge',        site:'mynforge.xyz',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'mexc', sold:''},
+  {id:7,  sim:'',              rank:'매각완료', followers:'25k',  devStatus:'매각완료', posting:'y', posts:'98',  xName:'Aivoryn',    xAcc:'@Aivoryn_officia', xPass:'rhkdtp00!!',  gName:'Aivoryn',    gAcc:'meow830417@gmail.com',           gPass:'rhkdtp00!!',  tgName:'Aivoryn',    tgLink:'https://t.me/Aivoryn',              twName:'Aivoryn',    twLink:'https://x.com/Aivoryn_officia', site:'aivoryn.xyz',      tokenAddr:'0xEc24290f0F0C88075558739777090DcB9fef4F04',  tokenKey:'c18dc9089231b08c3c8cc2733ea0826986631a31ca0536d50c1e22cb8054da63', domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:'매각완료'},
+  {id:8,  sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'y', posts:'24',  xName:'Synthoryx',  xAcc:'@Synthoryx',       xPass:'Abcd@1234',   gName:'Synthoryx',  gAcc:'synthoryx50@gmail.com',          gPass:'Abcd@1234',   tgName:'Synthoryx',  tgLink:'https://t.me/Synthoryx',            twName:'Synthoryx',  twLink:'https://x.com/Synthoryx',       site:'synthoryx.xyz',    tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:9,  sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'y', posts:'28',  xName:'mindvoria',  xAcc:'@mindvoria',       xPass:'Abcd@1234',   gName:'mindvoria',  gAcc:'mindvoria@gmail.com',            gPass:'Abcd@1234',   tgName:'mindvoria',  tgLink:'https://t.me/mindvoria',            twName:'mindvoria',  twLink:'https://x.com/mindvoria',       site:'mindvoria.org',    tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:10, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'intellora',  xAcc:'@IntelloraAi',     xPass:'Abcd@1234',   gName:'intellora',  gAcc:'intellora3@gmail.com',           gPass:'Abcd@1234',   tgName:'intellora',  tgLink:'https://t.me/intellora_Official',   twName:'intellora',  twLink:'https://x.com/IntelloraAi',     site:'intellora.org',    tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:11, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'Cognarex',   xAcc:'@Cognarex',        xPass:'Abcd@1234',   gName:'Cognarex',   gAcc:'cognarex@gmail.com',             gPass:'Abcd@1234',   tgName:'Cognarex',   tgLink:'https://t.me/Cognarex',             twName:'Cognarex',   twLink:'https://x.com/Cognarex',        site:'cognarex.xyz',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:12, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'Neuravix',   xAcc:'@Neuravix',        xPass:'Abcd@1234',   gName:'Neuravix',   gAcc:'neuravix812@gmail.com',          gPass:'Abcd@1234',   tgName:'Neuravix',   tgLink:'https://t.me/Neuravix_Official',    twName:'Neuravix',   twLink:'https://x.com/Neuravix',        site:'neuravix.xyz',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:13, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'Omnivora',   xAcc:'@OmnivoraAi',      xPass:'Abcd@1234',   gName:'Omnivora',   gAcc:'omnivora270@gmail.com',          gPass:'Abcd@1244',   tgName:'Omnivora',   tgLink:'https://t.me/OnivoraAi',            twName:'Omnivora',   twLink:'https://x.com/OmnivoraAi',      site:'omnivora.xyz',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:14, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'ZENIQA',     xAcc:'@ZeniqaAi',        xPass:'Abcd@1234',   gName:'ZENIQA',     gAcc:'zeniqa3@gmail.com',              gPass:'Abcd@1234',   tgName:'ZENIQA',     tgLink:'https://t.me/ZeniqaAi',             twName:'ZENIQA',     twLink:'https://x.com/ZeniqaAi',        site:'zeniqa.org',       tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:15, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'SYNTRAQ',    xAcc:'@SyntraqAi',       xPass:'Abcd@1234',   gName:'SYNTRAQ',    gAcc:'syntraq592@gmail.com',           gPass:'Abcd@1234',   tgName:'SYNTRAQ',    tgLink:'https://t.me/SyntraqAi',            twName:'SYNTRAQ',    twLink:'https://x.com/SyntraqAi',       site:'syntraq.org',      tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:16, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'ALTRYN',     xAcc:'@AltrynAi',        xPass:'Abcd@1234',   gName:'ALTRYN',     gAcc:'alryn29@gmail.com',              gPass:'Abcd@1234',   tgName:'ALTRYN',     tgLink:'https://t.me/Altryn',               twName:'ALTRYN',     twLink:'https://x.com/AltrynAi',        site:'altryn.xyz',       tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:17, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'TYRIONIX',   xAcc:'@Tyrionix_X',      xPass:'Abcd@1234',   gName:'TYRIONIX',   gAcc:'tyrionix42@gmail.com',           gPass:'Abcd@1234',   tgName:'TYRIONIX',   tgLink:'https://t.me/TYRIONIX',             twName:'TYRIONIX',   twLink:'https://x.com/Tyrionix_X',      site:'tyrionix.xyz',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:18, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'Aevyra',     xAcc:'@Aevyra_Official', xPass:'Abcd@1234',   gName:'Aevyra',     gAcc:'aveyra260@gmail.com',            gPass:'Abcd@1234',   tgName:'Aevyra',     tgLink:'https://t.me/Aevyra_official',      twName:'Aevyra',     twLink:'https://x.com/Aevyra_Official', site:'aevyra.xyz',       tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:19, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'Velynx',     xAcc:'@Velynx_Official', xPass:'Abcd@1234',   gName:'Velynx',     gAcc:'Velynx23@gmail.com',             gPass:'Abcd@1234',   tgName:'Velynx',     tgLink:'https://t.me/Velynx_Official',      twName:'Velynx',     twLink:'https://x.com/Velynx_Official', site:'velynx.xyz',       tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:20, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'Yuvin',      xAcc:'@Yuvin_Official',  xPass:'Abcd@1234',   gName:'Yuvin',      gAcc:'Yuvin957@gmail.com',             gPass:'Abcd@1234',   tgName:'Yuvin',      tgLink:'https://t.me/Yuvin_Official',       twName:'Yuvin',      twLink:'https://x.com/Yuvin_Official',  site:'yuvin.xyz',        tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:21, sim:'',              rank:'',         followers:'7k',   devStatus:'',         posting:'y', posts:'',    xName:'LUMORAI',    xAcc:'@LUMORAI_OP',      xPass:'rhkdtp00!!',  gName:'LUMORAI',    gAcc:'catnipsprint@gmail.com',         gPass:'rhkdtp00!!',  tgName:'LUMORAI',    tgLink:'',                                  twName:'LUMORAI',    twLink:'https://x.com/LUMORAI_OP',      site:'',                 tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:22, sim:'',              rank:'',         followers:'24k',  devStatus:'',         posting:'y', posts:'',    xName:'ZENTARAI',   xAcc:'@intellora_',      xPass:'rhkdtp00!!',  gName:'ZENTARAI',   gAcc:'moletaptap@gmail.com',           gPass:'rhkdtp00!!',  tgName:'ZENTARAI',   tgLink:'',                                  twName:'ZENTARAI',   twLink:'https://x.com/intellora_',      site:'',                 tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+];
+
+var shData = JSON.parse(localStorage.getItem(SH_KEY) || 'null') || SH_DEF.map(function(d){return Object.assign({},d);});
+var shNext = Math.max.apply(null, shData.map(function(p){return p.id;})) + 1;
+var shEid  = null;
+
+function shPersist() { localStorage.setItem(SH_KEY, JSON.stringify(shData)); }
+
+/* --   -- */
+var PW_MASK = '&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;';
+function shPw(el) {
+  if (el.innerHTML === PW_MASK) {
+    el.textContent = el.dataset.pw;
+    el.style.color = '#e2e8f0';
+    setTimeout(function(){ el.innerHTML = PW_MASK; el.style.color = ''; }, 5000);
+  } else {
+    el.innerHTML = PW_MASK;
+    el.style.color = '';
+  }
+}
+
+/* --   HTML  -- */
+function shRow(p) {
+  var esc = function(v){ return (v||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); };
+  var dash = '<span style="color:#475569">-</span>';
+  var isSold = p.sold==='매각완료' || p.rank==='매각완료';
+  var h = '<tr class="sh-tr' + (isSold?' sh-sold-r':'') + '" data-id="'+p.id+'">';
+
+  /* section */
+  h += '<td>'+esc(p.sim||'')+'</td>';
+  h += '<td>'+(p.rank==='매각완료'?'<span class="sh-badge sh-red">매각완료</span>':esc(p.rank||''))+'</td>';
+  h += '<td>'+(p.followers?'<b style="color:#fbbf24">'+esc(p.followers)+'</b>':dash)+'</td>';
+  h += '<td>'+(p.devStatus==='완료'?'<span class="sh-badge sh-green">완료</span>'
+              :p.devStatus==='매각완료'?'<span class="sh-badge sh-red">매각완료</span>'
+              :esc(p.devStatus||''))+'</td>';
+  h += '<td>'+(p.posting==='y'?'<span class="sh-badge sh-green">Y</span>':dash)+'</td>';
+  h += '<td>'+(p.posts?'<b>'+esc(p.posts)+'</b>':dash)+'</td>';
+
+  /* X */
+  h += '<td style="font-weight:600">'+esc(p.xName||'')+'</td>';
+  h += '<td>'+(p.xAcc?'<a class="sh-link" href="https://x.com/'+esc(p.xAcc.replace('@',''))+'" target="_blank"><i class="fab fa-x-twitter"></i> '+esc(p.xAcc)+'</a>':dash)+'</td>';
+  h += '<td><span class="sh-pw" onclick="shPw(this)" data-pw="'+esc(p.xPass||'')+'">'+PW_MASK+'</span></td>';
+
+  /* Google */
+  h += '<td>'+esc(p.gName||'')+'</td>';
+  h += '<td style="color:#60a5fa">'+esc(p.gAcc||'')+'</td>';
+  h += '<td><span class="sh-pw" onclick="shPw(this)" data-pw="'+esc(p.gPass||'')+'">'+PW_MASK+'</span></td>';
+
+  /* Telegram */
+  h += '<td>'+esc(p.tgName||'')+'</td>';
+  h += '<td>'+(p.tgLink?'<a class="sh-link" href="'+esc(p.tgLink)+'" target="_blank"><i class="fab fa-telegram"></i> '+esc(p.tgLink.replace('https://t.me/',''))+'</a>':dash)+'</td>';
+
+  /* Twitter */
+  h += '<td>'+esc(p.twName||'')+'</td>';
+  h += '<td>'+(p.twLink?'<a class="sh-link" href="'+esc(p.twLink)+'" target="_blank"><i class="fab fa-x-twitter"></i> '+esc(p.twLink.replace('https://x.com/','@').split('?')[0])+'</a>':dash)+'</td>';
+
+  /* / */
+  h += '<td>'+(p.site?'<a class="sh-link" href="https://'+esc(p.site)+'" target="_blank"><i class="fas fa-globe"></i> '+esc(p.site)+'</a>':dash)+'</td>';
+  h += '<td style="font-family:monospace;font-size:.67rem">'+(p.tokenAddr?'<a class="sh-link" href="https://bscscan.com/token/'+esc(p.tokenAddr)+'" target="_blank"><i class="fas fa-cube"></i> '+esc(p.tokenAddr.slice(0,10))+'...</a>':dash)+'</td>';
+  h += '<td>'+(p.tokenKey?'<span class="sh-pw" onclick="shPw(this)" data-pw="'+esc(p.tokenKey)+'">'+PW_MASK+'</span>':dash)+'</td>';
+
+  /* section */
+  h += '<td>'+esc(p.domainEmail||'')+'</td>';
+  h += '<td>'+(p.devDoc?'<a class="sh-link" href="'+esc(p.devDoc)+'" target="_blank"><i class="fas fa-file-alt"></i> 문서</a>':dash)+'</td>';
+
+  /* / */
+  h += '<td>'+(p.exchange?'<span style="background:rgba(99,102,241,.15);color:#a5b4fc;padding:2px 7px;border-radius:4px;font-size:.67rem;font-weight:700">'+esc(p.exchange.toUpperCase())+'</span>':dash)+'</td>';
+  h += '<td>'+(p.sold==='매각완료'?'<span class="sh-badge sh-red">매각완료</span>':esc(p.sold||''))+'</td>';
+
+  /* section */
+  h += '<td class="sh-act"><button class="sh-btn-e" onclick="shEdit('+p.id+')" title="편집"><i class="fas fa-pen"></i></button>'
+     + '<button class="sh-btn-d" onclick="shDel('+p.id+')" title="삭제"><i class="fas fa-trash"></i></button></td>';
+
+  h += '</tr>';
+  return h;
+}
+
+/* --    -- */
+function shGroupHeader() {
+  var groups = [], lastG = null, span = 0;
+  for (var i = 0; i < SH_COLS.length; i++) {
+    if (SH_COLS[i].g === lastG) { span++; groups[groups.length-1].span = span; }
+    else { lastG = SH_COLS[i].g; span = 1; groups.push({g:lastG, span:1}); }
+  }
+  var h = '<tr class="sh-grp">';
+  for (var j = 0; j < groups.length; j++) {
+    var c = SH_GCOL[groups[j].g] || '#94a3b8';
+    h += '<th colspan="'+groups[j].span+'" style="border-bottom:2px solid '+c+';color:'+c+'">'+groups[j].g+'</th>';
+  }
+  h += '<th></th></tr>';
+  return h;
+}
+
+/* --   -- */
+function shRender(data) {
+  var app = document.getElementById('sh-app');
+  if (!app) return;
+  if (!data) data = shData;
+
+  var total   = data.length;
+  var sold    = data.filter(function(p){return p.sold==='매각완료'||p.rank==='매각완료';}).length;
+  var active  = data.filter(function(p){return p.devStatus==='완료';}).length;
+  var posting = data.filter(function(p){return p.posting==='y';}).length;
+
+  var h = '';
+
+  /* --  -- */
+  h += '<div class="sh-toolbar">';
+  h += '<div class="sh-search"><i class="fas fa-search"></i>'
+     + '<input id="sh-q" placeholder="프로젝트명, 계정, 도메인..." oninput="shFilter()"></div>';
+
+  /* : */
+  h += '<select class="sh-sel" id="sh-fgrp" onchange="shFilter()">'
+     + '<option value="">전체 그룹</option>';
+  var grpsDone = {};
+  for (var ci = 0; ci < SH_COLS.length; ci++) {
+    var g = SH_COLS[ci].g;
+    if (!grpsDone[g]) { grpsDone[g]=1; h += '<option value="'+g+'">'+g+'</option>'; }
+  }
+  h += '</select>';
+
+  h += '<select class="sh-sel" id="sh-fst" onchange="shFilter()">'
+     + '<option value="">전체 상태</option>'
+     + '<option value="매각완료">매각완료</option>'
+     + '<option value="완료">개발완료</option>'
+     + '<option value="posting">포스팅중</option>'
+     + '</select>';
+
+  h += '<button onclick="shCSV()" class="sh-btn-ghost"><i class="fas fa-download"></i> CSV</button>';
+  h += '<button onclick="shAdd()" class="sh-btn-primary"><i class="fas fa-plus"></i> 추가</button>';
+
+  /* section */
+  h += '<div class="sh-stats">'
+     + '<div class="sh-stat"><div class="sh-sn" style="color:#6366f1">'+total+'</div><div class="sh-sl">Total</div></div>'
+     + '<div class="sh-stat"><div class="sh-sn" style="color:#ef4444">'+sold+'</div><div class="sh-sl">매각완료</div></div>'
+     + '<div class="sh-stat"><div class="sh-sn" style="color:#22c55e">'+active+'</div><div class="sh-sl">개발완료</div></div>'
+     + '<div class="sh-stat"><div class="sh-sn" style="color:#fbbf24">'+posting+'</div><div class="sh-sl">포스팅중</div></div>'
+     + '</div>';
+  h += '</div>'; /* end toolbar */
+
+  /* --  -- */
+  h += '<div class="sh-wrap"><table class="sh-table">';
+  h += '<colgroup>';
+  for (var ci2 = 0; ci2 < SH_COLS.length; ci2++) {
+    h += '<col style="min-width:'+SH_COLS[ci2].w+'px">';
+  }
+  h += '<col style="min-width:70px"></colgroup>';
+
+  h += '<thead>';
+  h += shGroupHeader();
+  h += '<tr>';
+  for (var ci3 = 0; ci3 < SH_COLS.length; ci3++) {
+    var col = SH_COLS[ci3];
+    var c2 = SH_GCOL[col.g] || '#94a3b8';
+    h += '<th style="border-top:2px solid '+c2+'20">'+col.h+'</th>';
+  }
+  h += '<th>액션</th></tr>';
+  h += '</thead>';
+
+  h += '<tbody>';
+  if (data.length === 0) {
+    h += '<tr><td colspan="'+(SH_COLS.length+1)+'" style="text-align:center;padding:2rem;color:#475569">검색 결과가 없습니다</td></tr>';
+  } else {
+    for (var ri = 0; ri < data.length; ri++) { h += shRow(data[ri]); }
+  }
+  h += '</tbody></table></div>';
+
+  app.innerHTML = h;
+}
+
+/* --  -- */
+function shFilter() {
+  var q    = (document.getElementById('sh-q')||{value:''}).value.toLowerCase();
+  var fgrp = (document.getElementById('sh-fgrp')||{value:''}).value;
+  var fst  = (document.getElementById('sh-fst')||{value:''}).value;
+
+  var filtered = shData.filter(function(p) {
+    /* section */
+    var txt = [p.xName,p.xAcc,p.gAcc,p.site,p.sim,p.tgLink,p.twLink].join(' ').toLowerCase();
+    if (q && !txt.includes(q)) return false;
+
+    /* section */
+    if (fst === '매각완료' && p.sold !== '매각완료' && p.rank !== '매각완료') return false;
+    if (fst === '완료'     && p.devStatus !== '완료') return false;
+    if (fst === 'posting'  && p.posting !== 'y') return false;
+
+    /* section */
+    if (fgrp) {
+      var gCols = SH_COLS.filter(function(c){return c.g===fgrp;}).map(function(c){return c.k;});
+      var hasVal = gCols.some(function(k){return !!(p[k]||'').trim();});
+      if (!hasVal) return false;
+    }
+    return true;
+  });
+  shRender(filtered);
+}
+
+/* --  /   -- */
+function shAdd() {
+  shEid = null;
+  document.getElementById('sh-mt').textContent = '새 프로젝트 추가';
+  SH_COLS.forEach(function(c) {
+    var el = document.getElementById('sf-'+c.k);
+    if (el) el.value = '';
+  });
+  document.getElementById('sh-modal').classList.add('open');
+}
+function shEdit(id) {
+  var p = shData.find(function(x){return x.id===id;});
+  if (!p) return;
+  shEid = id;
+  document.getElementById('sh-mt').textContent = '편집: ' + (p.xName||id);
+  SH_COLS.forEach(function(c) {
+    var el = document.getElementById('sf-'+c.k);
+    if (el) el.value = p[c.k] || '';
+  });
+  document.getElementById('sh-modal').classList.add('open');
+}
+function shClose() {
+  document.getElementById('sh-modal').classList.remove('open');
+  shEid = null;
+}
+function shSave() {
+  var v = {id: shEid !== null ? shEid : shNext++};
+  SH_COLS.forEach(function(c) {
+    var el = document.getElementById('sf-'+c.k);
+    v[c.k] = el ? el.value.trim() : '';
+  });
+  if (!v.xName) { shToast('프로젝트명(X 프로젝트명)을 입력하세요', true); return; }
+  if (shEid !== null) {
+    var idx = shData.findIndex(function(p){return p.id===shEid;});
+    if (idx >= 0) shData[idx] = Object.assign({}, shData[idx], v);
+    shToast('저장 완료: ' + v.xName);
+  } else {
+    shData.push(v);
+    shToast('추가 완료: ' + v.xName);
+  }
+  shPersist();
+  shClose();
+  shRender();
+}
+function shDel(id) {
+  var p = shData.find(function(x){return x.id===id;});
+  if (!confirm((p && p.xName ? p.xName : '이 항목') + '을(를) 삭제하시겠습니까?')) return;
+  shData = shData.filter(function(x){return x.id!==id;});
+  shPersist();
+  shRender();
+  shToast('삭제 완료');
+}
+
+/* -- CSV  -- */
+function shCSV() {
+  var headers = SH_COLS.map(function(c){return '"'+c.h+'"';}).join(',');
+  var rows = shData.map(function(p) {
+    return SH_COLS.map(function(c){
+      return '"'+(p[c.k]||'').replace(/"/g,'""')+'"';
+    }).join(',');
+  });
+  var NL = String.fromCharCode(10);
+  var blob = new Blob([String.fromCharCode(0xFEFF)+headers+NL+rows.join(NL)], {type:'text/csv;charset=utf-8;'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'portfolio_' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+  shToast('CSV 다운로드 완료');
+}
+
+/* --  -- */
+function shToast(msg, isErr) {
+  var t = document.getElementById('sh-toast');
+  if (!t) return;
+  t.textContent = (isErr ? '! ' : 'v ') + msg;
+  t.className = 'sh-toast show' + (isErr ? ' err' : '');
+  setTimeout(function(){ t.className = 'sh-toast'; }, 2500);
+}
+
+/* / ESC , */
+document.addEventListener('DOMContentLoaded', function() {
+  var modal = document.getElementById('sh-modal');
+  if (modal) {
+    modal.addEventListener('click', function(e){ if(e.target===modal) shClose(); });
+  }
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') shClose(); });
+
+  /* section */
+  var mBody = document.getElementById('sh-modal-fields');
+  if (mBody) {
+    var lastG = null;
+    var fHtml = '';
+    for (var i = 0; i < SH_COLS.length; i++) {
+      var col = SH_COLS[i];
+      if (col.g !== lastG) {
+        var gc = SH_GCOL[col.g] || '#94a3b8';
+        fHtml += '<div class="sh-field-group-head" style="color:'+gc+'"><i class="fas fa-circle" style="font-size:.4rem;margin-right:.4rem"></i>'+col.g+'</div>';
+        lastG = col.g;
+      }
+      var isPass = col.k.toLowerCase().indexOf('pass') >= 0 || col.k === 'tokenKey';
+      fHtml += '<div class="sh-field">'
+             + '<label>'+col.h+'</label>'
+             + '<input type="'+(isPass?'password':'text')+'" id="sf-'+col.k+'" placeholder="'+col.h+'">'
+             + '</div>';
+    }
+    mBody.innerHTML = fHtml;
+  }
+});
 </script>
 </body>
 </html>`
