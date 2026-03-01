@@ -384,9 +384,12 @@ export function dashboardPage(): string {
             <a href="/project/ailink" style="text-decoration: none;">
               <div class="project-card" style="--card-color: #3b82f6;" onclick="">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                  <div>
-                    <div style="font-size: 1.1rem; font-weight: 700; color: white;">AILINK</div>
-                    <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;">ailink-web · v2.0.0</div>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <img src="https://ailink-web.pages.dev/static/logo-icon.svg" alt="AILINK" style="width:36px;height:36px;border-radius:8px;flex-shrink:0;" onerror="this.style.display='none'"/>
+                    <div>
+                      <div style="font-size: 1.1rem; font-weight: 700; color: white;">AILINK</div>
+                      <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;">ailink-web · v2.0.0</div>
+                    </div>
                   </div>
                   <span class="status-badge status-active">
                     <span style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></span>
@@ -438,9 +441,12 @@ export function dashboardPage(): string {
             <a href="/project/davinci" style="text-decoration: none;">
               <div class="project-card" style="--card-color: #8b5cf6;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                  <div>
-                    <div style="font-size: 1.1rem; font-weight: 700; color: white;">DaVinci AI</div>
-                    <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;">davinci-ai · v3.5.0</div>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <img src="https://davinci-ai.pages.dev/static/logo-icon.svg" alt="DaVinci AI" style="width:36px;height:36px;border-radius:8px;flex-shrink:0;" onerror="this.style.display='none'"/>
+                    <div>
+                      <div style="font-size: 1.1rem; font-weight: 700; color: white;">DaVinci AI</div>
+                      <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;">davinci-ai · v3.5.0</div>
+                    </div>
                   </div>
                   <span class="status-badge status-active">
                     <span style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></span>
@@ -492,9 +498,12 @@ export function dashboardPage(): string {
             <a href="/project/zentarai" style="text-decoration: none;">
               <div class="project-card" style="--card-color: #10b981;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-                  <div>
-                    <div style="font-size: 1.1rem; font-weight: 700; color: white;">ZentarAI</div>
-                    <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;">zentarai · v1.0.0</div>
+                  <div style="display:flex;align-items:center;gap:10px;">
+                    <img src="https://zentarai.pages.dev/static/logo-icon.svg" alt="ZentarAI" style="width:36px;height:36px;border-radius:8px;flex-shrink:0;" onerror="this.style.display='none'"/>
+                    <div>
+                      <div style="font-size: 1.1rem; font-weight: 700; color: white;">ZentarAI</div>
+                      <div style="font-size: 0.75rem; color: #64748b; margin-top: 2px;">zentarai · v1.0.0</div>
+                    </div>
                   </div>
                   <span class="status-badge status-active">
                     <span style="width: 6px; height: 6px; background: #22c55e; border-radius: 50%;"></span>
@@ -566,9 +575,7 @@ export function dashboardPage(): string {
       <a href="/project/ailink" style="text-decoration: none;">
         <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(59,130,246,0.2); border-radius: 1rem; padding: 1.5rem; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(59,130,246,0.5)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(59,130,246,0.2)'">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #1d4ed8, #3b82f6); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-link" style="color: white;"></i>
-            </div>
+            <img src="https://ailink-web.pages.dev/static/logo-icon.svg" alt="AILINK" style="width:48px;height:48px;border-radius:12px;" onerror="this.parentNode.innerHTML='<div style=&quot;width:48px;height:48px;background:linear-gradient(135deg,#1d4ed8,#3b82f6);border-radius:12px;display:flex;align-items:center;justify-content:center;&quot;><i class=&quot;fas fa-link&quot; style=&quot;color:white;&quot;></i></div>'"/>
             <span class="status-badge status-active"><span style="width:6px;height:6px;background:#22c55e;border-radius:50%;"></span> Active</span>
           </div>
           <h3 style="font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.25rem;">AILINK</h3>
@@ -591,9 +598,7 @@ export function dashboardPage(): string {
       <a href="/project/davinci" style="text-decoration: none;">
         <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(139,92,246,0.2); border-radius: 1rem; padding: 1.5rem; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(139,92,246,0.5)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(139,92,246,0.2)'">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #6d28d9, #8b5cf6); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-palette" style="color: white;"></i>
-            </div>
+            <img src="https://davinci-ai.pages.dev/static/logo-icon.svg" alt="DaVinci AI" style="width:48px;height:48px;border-radius:12px;" onerror="this.parentNode.innerHTML='<div style=&quot;width:48px;height:48px;background:linear-gradient(135deg,#6d28d9,#8b5cf6);border-radius:12px;display:flex;align-items:center;justify-content:center;&quot;><i class=&quot;fas fa-palette&quot; style=&quot;color:white;&quot;></i></div>'"/>
             <span class="status-badge status-active"><span style="width:6px;height:6px;background:#22c55e;border-radius:50%;"></span> Active</span>
           </div>
           <h3 style="font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.25rem;">DaVinci AI</h3>
@@ -616,9 +621,7 @@ export function dashboardPage(): string {
       <a href="/project/zentarai" style="text-decoration: none;">
         <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(16,185,129,0.2); border-radius: 1rem; padding: 1.5rem; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.transform='translateY(-4px)';this.style.borderColor='rgba(16,185,129,0.5)'" onmouseout="this.style.transform='';this.style.borderColor='rgba(16,185,129,0.2)'">
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
-            <div style="width: 48px; height: 48px; background: linear-gradient(135deg, #059669, #10b981); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-              <i class="fas fa-brain" style="color: white;"></i>
-            </div>
+            <img src="https://zentarai.pages.dev/static/logo-icon.svg" alt="ZentarAI" style="width:48px;height:48px;border-radius:12px;" onerror="this.parentNode.innerHTML='<div style=&quot;width:48px;height:48px;background:linear-gradient(135deg,#059669,#10b981);border-radius:12px;display:flex;align-items:center;justify-content:center;&quot;><i class=&quot;fas fa-brain&quot; style=&quot;color:white;&quot;></i></div>'"/>
             <span class="status-badge status-active"><span style="width:6px;height:6px;background:#22c55e;border-radius:50%;"></span> Active</span>
           </div>
           <h3 style="font-size: 1.1rem; font-weight: 700; color: white; margin-bottom: 0.25rem;">ZentarAI</h3>
@@ -1232,6 +1235,8 @@ var SH_COLS = [
   {k:'twName',    h:'TW 프로젝트명', g:'Twitter', w:110},
   {k:'twLink',    h:'TW 링크',       g:'Twitter', w:160},
   {k:'site',      h:'사이트',        g:'사이트/토큰',w:140},
+  {k:'tokenName',  h:'토큰명',        g:'토큰',     w:90},
+  {k:'category',   h:'카테고리',      g:'토큰',     w:120},
   {k:'tokenAddr', h:'Token Address', g:'사이트/토큰',w:160},
   {k:'tokenKey',  h:'Token Key',     g:'사이트/토큰',w:120},
   {k:'domainEmail',h:'도메인이메일', g:'기타',    w:160},
@@ -1247,6 +1252,7 @@ var SH_GCOL = {
   'Google':      '#22c55e',
   'Telegram':    '#06b6d4',
   'Twitter':     '#8b5cf6',
+  '토큰':        '#ec4899',
   '사이트/토큰': '#f59e0b',
   '기타':        '#94a3b8',
   '거래소/매각': '#ef4444',
@@ -1256,8 +1262,8 @@ var SH_GCOL = {
 var SH_DEF = [
   {id:1,  sim:'',              rank:'매각완료', followers:'26k',  devStatus:'매각완료', posting:'',  posts:'',    xName:'mole',       xAcc:'@MoleSmash',       xPass:'rhkdtp00!!',  gName:'mole',       gAcc:'moletaptap@gmail.com',          gPass:'rhkdtp00!!',  tgName:'mole',       tgLink:'https://t.me/MoleOfficialchannel',  twName:'mole',       twLink:'https://x.com/MoleSmash',       site:'molesmash.xyz',    tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'mexc', sold:'매각완료'},
   {id:2,  sim:'880 1601929592',rank:'매각완료', followers:'200',  devStatus:'매각완료', posting:'y', posts:'232', xName:'tonixai',    xAcc:'@TonixAiOfficial', xPass:'Abcd@1233',   gName:'tonnixai',   gAcc:'mrstefan45678@gmail.com',        gPass:'12345@Abcd',  tgName:'tonixai',    tgLink:'https://t.me/tonixaiOfficial',      twName:'tonixai',    twLink:'https://x.com/TonixAiOfficial', site:'tonixai.org',      tokenAddr:'0x91025973e28d2CC43C42A5b1A2308F5Fe4AAf436', tokenKey:'de935095fa09f9e198c6dcd48d72b42fd38db51cbc92013241d96a747afc8ae0', domainEmail:'', devDoc:'',                                                                                                                    exchange:'mexc', sold:'매각완료'},
-  {id:3,  sim:'',              rank:'',         followers:'',     devStatus:'완료',     posting:'y', posts:'98',  xName:'DaVinci AI', xAcc:'@DVinciAiZ',       xPass:'Abcd@1233',   gName:'DaVinci AI', gAcc:'davinciai59sala@gmail.com',      gPass:'Abcd@1233',   tgName:'DaVinci AI', tgLink:'https://t.me/DaVinciAiZ',           twName:'DaVinci AI', twLink:'https://x.com/DVinciAiZ',       site:'davinciai.io',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'https://docs.google.com/document/d/1tTYRudGDhRK91Mo81uRNdxfD6Mpc4FKWwJU8k8rgpWU/edit', exchange:'mexc', sold:''},
-  {id:4,  sim:'',              rank:'',         followers:'',     devStatus:'완료',     posting:'y', posts:'118', xName:'AiLink',     xAcc:'@AiLink_Official', xPass:'Abcd@1233',   gName:'AiLink',     gAcc:'ailinkofficial.net@gmail.com',   gPass:'Abcd@1233',   tgName:'AiLink',     tgLink:'https://t.me/AiLink_Official',      twName:'AiLink',     twLink:'https://x.com/AiLink_Official', site:'aichainlabs.xyz',  tokenAddr:'0x33c5502261c589a2EC4B1a6C4350aBF60ef47254', tokenKey:'d0c65aaa3ff528bb9c649b71b37d74691b7d283efbce04e7390df101a5709e20', domainEmail:'', devDoc:'https://docs.google.com/document/d/1p-Lk94S_KjtVfKo4W1cbqqhdkMkTvxc8JGEd4V-3IAc/edit', exchange:'mexc', sold:''},
+  {id:3,  sim:'',              rank:'',         followers:'',     devStatus:'완료',     posting:'y', posts:'98',  xName:'DaVinci AI', xAcc:'@DVinciAiZ',       xPass:'Abcd@1233',   gName:'DaVinci AI', gAcc:'davinciai59sala@gmail.com',      gPass:'Abcd@1233',   tgName:'DaVinci AI', tgLink:'https://t.me/DaVinciAiZ',           twName:'DaVinci AI', twLink:'https://x.com/DVinciAiZ',       site:'davinciai.io',     tokenName:'DAVINCI', category:'AI + NFT',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'https://docs.google.com/document/d/1tTYRudGDhRK91Mo81uRNdxfD6Mpc4FKWwJU8k8rgpWU/edit', exchange:'mexc', sold:''},
+  {id:4,  sim:'',              rank:'',         followers:'',     devStatus:'완료',     posting:'y', posts:'118', xName:'AiLink',     xAcc:'@AiLink_Official', xPass:'Abcd@1233',   gName:'AiLink',     gAcc:'ailinkofficial.net@gmail.com',   gPass:'Abcd@1233',   tgName:'AiLink',     tgLink:'https://t.me/AiLink_Official',      twName:'AiLink',     twLink:'https://x.com/AiLink_Official', site:'aichainlabs.xyz',  tokenName:'ALINK',   category:'DeFi + AI',    tokenAddr:'0x33c5502261c589a2EC4B1a6C4350aBF60ef47254', tokenKey:'d0c65aaa3ff528bb9c649b71b37d74691b7d283efbce04e7390df101a5709e20', domainEmail:'', devDoc:'https://docs.google.com/document/d/1p-Lk94S_KjtVfKo4W1cbqqhdkMkTvxc8JGEd4V-3IAc/edit', exchange:'mexc', sold:''},
   {id:5,  sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'y', posts:'49',  xName:'visixion',   xAcc:'@visixion',        xPass:'Abcd@1234',   gName:'visixion',   gAcc:'mdrazzakcom@gmail.com',          gPass:'Abcd@1234',   tgName:'visixion',   tgLink:'https://t.me/visixion_official',    twName:'visixion',   twLink:'https://x.com/visixion',        site:'visixion.xyz',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'https://docs.google.com/document/d/1IWtQEXcwGAlEDDIiVPucllIeVrUAR-nIQ3u5cpwKpfA/edit', exchange:'mexc', sold:''},
   {id:6,  sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'y', posts:'35',  xName:'mynforge',   xAcc:'@mynforge',        xPass:'Abcd@1234',   gName:'mynforge',   gAcc:'mynforge@gmail.com',            gPass:'Abcd@1234',   tgName:'mynforge',   tgLink:'https://t.me/mynforge',             twName:'mynforge',   twLink:'https://x.com/mynforge',        site:'mynforge.xyz',     tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'mexc', sold:''},
   {id:7,  sim:'',              rank:'매각완료', followers:'25k',  devStatus:'매각완료', posting:'y', posts:'98',  xName:'Aivoryn',    xAcc:'@Aivoryn_officia', xPass:'rhkdtp00!!',  gName:'Aivoryn',    gAcc:'meow830417@gmail.com',           gPass:'rhkdtp00!!',  tgName:'Aivoryn',    tgLink:'https://t.me/Aivoryn',              twName:'Aivoryn',    twLink:'https://x.com/Aivoryn_officia', site:'aivoryn.xyz',      tokenAddr:'0xEc24290f0F0C88075558739777090DcB9fef4F04',  tokenKey:'c18dc9089231b08c3c8cc2733ea0826986631a31ca0536d50c1e22cb8054da63', domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:'매각완료'},
@@ -1275,7 +1281,7 @@ var SH_DEF = [
   {id:19, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'Velynx',     xAcc:'@Velynx_Official', xPass:'Abcd@1234',   gName:'Velynx',     gAcc:'Velynx23@gmail.com',             gPass:'Abcd@1234',   tgName:'Velynx',     tgLink:'https://t.me/Velynx_Official',      twName:'Velynx',     twLink:'https://x.com/Velynx_Official', site:'velynx.xyz',       tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
   {id:20, sim:'',              rank:'',         followers:'',     devStatus:'',         posting:'',  posts:'',    xName:'Yuvin',      xAcc:'@Yuvin_Official',  xPass:'Abcd@1234',   gName:'Yuvin',      gAcc:'Yuvin957@gmail.com',             gPass:'Abcd@1234',   tgName:'Yuvin',      tgLink:'https://t.me/Yuvin_Official',       twName:'Yuvin',      twLink:'https://x.com/Yuvin_Official',  site:'yuvin.xyz',        tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
   {id:21, sim:'',              rank:'',         followers:'7k',   devStatus:'',         posting:'y', posts:'',    xName:'LUMORAI',    xAcc:'@LUMORAI_OP',      xPass:'rhkdtp00!!',  gName:'LUMORAI',    gAcc:'catnipsprint@gmail.com',         gPass:'rhkdtp00!!',  tgName:'LUMORAI',    tgLink:'',                                  twName:'LUMORAI',    twLink:'https://x.com/LUMORAI_OP',      site:'',                 tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
-  {id:22, sim:'',              rank:'',         followers:'24k',  devStatus:'',         posting:'y', posts:'',    xName:'ZENTARAI',   xAcc:'@intellora_',      xPass:'rhkdtp00!!',  gName:'ZENTARAI',   gAcc:'moletaptap@gmail.com',           gPass:'rhkdtp00!!',  tgName:'ZENTARAI',   tgLink:'',                                  twName:'ZENTARAI',   twLink:'https://x.com/intellora_',      site:'',                 tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
+  {id:22, sim:'',              rank:'',         followers:'24k',  devStatus:'',         posting:'y', posts:'',    xName:'ZENTARAI',   xAcc:'@intellora_',      xPass:'rhkdtp00!!',  gName:'ZENTARAI',   gAcc:'moletaptap@gmail.com',           gPass:'rhkdtp00!!',  tgName:'ZENTARAI',   tgLink:'https://t.me/ZentarAI',             twName:'ZENTARAI',   twLink:'https://x.com/intellora_',      site:'zentarai.pages.dev',tokenName:'ZNTR',    category:'AI + DeFi Signal', tokenAddr:'',                                         tokenKey:'',                                                              domainEmail:'', devDoc:'',                                                                                                                    exchange:'',     sold:''},
 ];
 
 var shData = JSON.parse(localStorage.getItem(SH_KEY) || 'null') || SH_DEF.map(function(d){return Object.assign({},d);});
@@ -1331,6 +1337,8 @@ function shRow(p) {
 
   /* / */
   h += '<td>'+(p.site?'<a class="sh-link" href="https://'+esc(p.site)+'" target="_blank"><i class="fas fa-globe"></i> '+esc(p.site)+'</a>':dash)+'</td>';
+  h += '<td>'+(p.tokenName?'<span style="font-weight:700;color:#f9a8d4;font-size:.75rem;">'+esc(p.tokenName)+'</span>':dash)+'</td>';
+  h += '<td>'+(p.category?'<span style="background:rgba(236,72,153,0.12);border:1px solid rgba(236,72,153,0.3);border-radius:4px;padding:2px 7px;font-size:.68rem;color:#f9a8d4;">'+esc(p.category)+'</span>':dash)+'</td>';
   h += '<td style="font-family:monospace;font-size:.67rem">'+(p.tokenAddr?'<a class="sh-link" href="https://bscscan.com/token/'+esc(p.tokenAddr)+'" target="_blank"><i class="fas fa-cube"></i> '+esc(p.tokenAddr.slice(0,10))+'...</a>':dash)+'</td>';
   h += '<td style="font-family:monospace;font-size:.67rem;color:#fca5a5">'+esc(p.tokenKey||'')+'</td>';
 

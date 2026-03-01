@@ -42,6 +42,7 @@ const PROJECTS: Record<string, any> = {
     category: 'AI + NFT', color: '#8b5cf6',
     contractAddress: '',
     tokenKey: '',
+    logoBase: 'https://davinci-ai.pages.dev/static',
     sourceCodeUrl: 'https://github.com/vinsenzo83/davinci-ai/archive/refs/heads/main.zip',
     urls: { production: 'https://davinciai.io', pages: 'https://davinci-ai.pages.dev', github: 'https://github.com/vinsenzo83/davinci-ai', twitter: 'https://x.com/DaVinciAiZ', telegram: 'https://t.me/DaVinciAiZ' },
     team: [{ name: 'Leonardo Chen', role: 'CEO' }, { name: 'Aria Nakamoto', role: 'CTO' }, { name: 'Marcus Rivera', role: 'CCO' }, { name: 'Yuki Tanaka', role: 'Head of Partnerships' }],
@@ -77,13 +78,14 @@ const PROJECTS: Record<string, any> = {
     category: 'AI + DeFi Signal', color: '#10b981',
     contractAddress: '',  // 토큰 미발행 — TGE Q2 2026 이후 업데이트
     tokenKey: '',
+    logoBase: 'https://zentarai.pages.dev/static',
     sourceCodeUrl: 'https://github.com/vinsenzo83/zentarai/archive/refs/heads/main.zip',
     urls: {
       production: 'https://zentarai.pages.dev',
       pages: 'https://zentarai.pages.dev',
       github: 'https://github.com/vinsenzo83/zentarai',
       twitter: 'https://x.com/intellora_',
-      telegram: 'https://t.me/zentarai_official'
+      telegram: 'https://t.me/ZentarAI'
     },
     team: [
       { name: 'Vincent Kim', role: 'CEO & Founder' },
@@ -272,12 +274,38 @@ export function projectDetailPage(id: string): string {
   </div>
 
   <!-- Downloads & Assets Card -->
-  ${(p.sourceCodeUrl || p.contractAddress || p.tokenKey || p.tge) ? `
+  ${(p.sourceCodeUrl || p.contractAddress || p.tokenKey || p.tge || p.logoBase) ? `
   <div class="card" style="grid-column: 1 / -1; border-color: rgba(139,92,246,0.25);">
     <h3 style="font-size: 1rem; font-weight: 700; color: white; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
       <i class="fas fa-file-archive" style="color: #a78bfa;"></i> Downloads &amp; Assets
     </h3>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem;">
+
+      ${p.logoBase ? `
+      <!-- Logo Downloads -->
+      <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 0.75rem; padding: 1rem;">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:0.75rem;">
+          <img src="${p.logoBase}/logo-icon.svg" alt="${p.name} Logo" style="width:36px;height:36px;border-radius:8px;" onerror="this.style.display='none'"/>
+          <div>
+            <div style="font-size: 0.7rem; color: #34d399; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700;"><i class="fas fa-images"></i> Official Logo Kit</div>
+            <div style="font-size:0.72rem;color:#64748b;">SVG format — free to use</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+          <a href="${p.logoBase}/logo-square.svg" download="${p.codename}-logo-square.svg"
+             style="display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;font-weight:600;color:#34d399;border:1px solid rgba(52,211,153,0.3);border-radius:6px;padding:5px 10px;text-decoration:none;background:rgba(52,211,153,0.06);">
+            <i class="fas fa-download" style="font-size:0.65rem;"></i> 1:1
+          </a>
+          <a href="${p.logoBase}/logo-horizontal.svg" download="${p.codename}-logo-horizontal.svg"
+             style="display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;font-weight:600;color:#34d399;border:1px solid rgba(52,211,153,0.3);border-radius:6px;padding:5px 10px;text-decoration:none;background:rgba(52,211,153,0.06);">
+            <i class="fas fa-download" style="font-size:0.65rem;"></i> Horizontal
+          </a>
+          <a href="${p.logoBase}/logo-icon.svg" download="${p.codename}-logo-icon.svg"
+             style="display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;font-weight:600;color:#34d399;border:1px solid rgba(52,211,153,0.3);border-radius:6px;padding:5px 10px;text-decoration:none;background:rgba(52,211,153,0.06);">
+            <i class="fas fa-download" style="font-size:0.65rem;"></i> Icon
+          </a>
+        </div>
+      </div>` : ''}
 
       ${p.sourceCodeUrl ? `
       <!-- Source Code -->
