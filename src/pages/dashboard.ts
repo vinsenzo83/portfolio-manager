@@ -580,6 +580,57 @@ export function dashboardPage(): string {
         </div>
       </div>
 
+      <!-- Common Blockchain Policy -->
+      <div style="background: linear-gradient(135deg, rgba(243,186,47,0.08), rgba(243,186,47,0.03)); border: 1px solid rgba(243,186,47,0.3); border-radius: 1rem; padding: 1.5rem; grid-column: 1 / -1;">
+        <h3 style="font-size: 1rem; font-weight: 700; color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+          <i class="fas fa-link" style="color: #f3ba2f;"></i> 공통 블록체인 정책 — <span style="color: #f3ba2f; font-weight: 800;">모든 프로젝트 BNB Chain (BEP-20) 발행</span>
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem;">
+          <div style="background: rgba(243,186,47,0.06); border: 1px solid rgba(243,186,47,0.15); border-radius: 0.75rem; padding: 1rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" style="width:20px;height:20px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none'" />
+              <span style="color: #f3ba2f; font-weight: 700; font-size: 0.9rem;">BNB Chain</span>
+            </div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">공식 발행 네트워크 (BSC Mainnet)</div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 0.25rem;">Chain ID: 56</div>
+          </div>
+          <div style="background: rgba(243,186,47,0.06); border: 1px solid rgba(243,186,47,0.15); border-radius: 0.75rem; padding: 1rem;">
+            <i class="fas fa-file-contract" style="color: #f3ba2f; margin-bottom: 0.5rem; display: block;"></i>
+            <div style="color: #e2e8f0; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.25rem;">토큰 표준</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">BEP-20 (ERC-20 호환)</div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 0.25rem;">BSCScan 컨트랙트 검증 필수</div>
+          </div>
+          <div style="background: rgba(243,186,47,0.06); border: 1px solid rgba(243,186,47,0.15); border-radius: 0.75rem; padding: 1rem;">
+            <i class="fas fa-exchange-alt" style="color: #f3ba2f; margin-bottom: 0.5rem; display: block;"></i>
+            <div style="color: #e2e8f0; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.25rem;">공통 DEX</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">PancakeSwap (BSC)</div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 0.25rem;">초기 유동성 공급 기본 DEX</div>
+          </div>
+          <div style="background: rgba(243,186,47,0.06); border: 1px solid rgba(243,186,47,0.15); border-radius: 0.75rem; padding: 1rem;">
+            <i class="fas fa-wallet" style="color: #f3ba2f; margin-bottom: 0.5rem; display: block;"></i>
+            <div style="color: #e2e8f0; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.25rem;">공통 지갑 연동</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">MetaMask + WalletConnect</div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 0.25rem;">BNB Chain 네트워크 자동 추가</div>
+          </div>
+          <div style="background: rgba(243,186,47,0.06); border: 1px solid rgba(243,186,47,0.15); border-radius: 0.75rem; padding: 1rem;">
+            <i class="fas fa-shield-alt" style="color: #f3ba2f; margin-bottom: 0.5rem; display: block;"></i>
+            <div style="color: #e2e8f0; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.25rem;">컨트랙트 보안</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">CertiK / BSCScan Verified</div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 0.25rem;">소스코드 공개 검증 필수</div>
+          </div>
+          <div style="background: rgba(243,186,47,0.06); border: 1px solid rgba(243,186,47,0.15); border-radius: 0.75rem; padding: 1rem;">
+            <i class="fas fa-gas-pump" style="color: #f3ba2f; margin-bottom: 0.5rem; display: block;"></i>
+            <div style="color: #e2e8f0; font-weight: 600; font-size: 0.85rem; margin-bottom: 0.25rem;">Gas 비용</div>
+            <div style="font-size: 0.75rem; color: #94a3b8;">BNB (저렴한 트랜잭션 수수료)</div>
+            <div style="font-size: 0.7rem; color: #64748b; margin-top: 0.25rem;">~$0.01~0.1 per tx (평균)</div>
+          </div>
+        </div>
+        <div style="margin-top: 1rem; padding: 0.75rem 1rem; background: rgba(243,186,47,0.08); border-radius: 0.5rem; display: flex; align-items: center; gap: 0.75rem;">
+          <i class="fas fa-info-circle" style="color: #f3ba2f;"></i>
+          <span style="font-size: 0.8rem; color: #94a3b8;"><strong style="color: #f3ba2f;">공통 원칙:</strong> 모든 프로젝트 토큰은 BNB Chain (BSC Mainnet, Chain ID: 56) 에서 BEP-20 표준으로 발행됩니다. 컨트랙트 주소는 BSCScan (bscscan.com)에서 확인 가능합니다.</span>
+        </div>
+      </div>
+
       <!-- Common Pages -->
       <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 1rem; padding: 1.5rem;">
         <h3 style="font-size: 1rem; font-weight: 700; color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
@@ -673,11 +724,11 @@ export function dashboardPage(): string {
         { title: '토큰 정보', icon: 'fas fa-coins', color: '#fbbf24', fields: [
           ['필수', '#22c55e', 'Token Symbol', 'ALINK, DAVINCI 등'],
           ['필수', '#22c55e', 'Total Supply', '총 발행량'],
-          ['필수', '#22c55e', 'Blockchain', 'BNB Chain, Ethereum 등'],
-          ['필수', '#22c55e', 'Token Standard', 'BEP-20, ERC-20 등'],
-          ['필수', '#22c55e', 'Contract Address', '배포된 컨트랙트 주소'],
+          ['공통고정', '#f3ba2f', 'Blockchain', '⚠️ 모든 프로젝트: BNB Chain (BSC Mainnet, Chain ID: 56)'],
+          ['공통고정', '#f3ba2f', 'Token Standard', '⚠️ 모든 프로젝트: BEP-20 (ERC-20 호환)'],
+          ['필수', '#22c55e', 'Contract Address', '배포된 BSCScan 컨트랙트 주소'],
           ['필수', '#22c55e', 'TGE Date', '토큰 발행 예정일'],
-          ['필수', '#22c55e', 'DEX Listing', 'PancakeSwap, Uniswap 등']
+          ['공통고정', '#f3ba2f', 'DEX Listing', '⚠️ 공통: PancakeSwap (BSC) 초기 상장']
         ]},
         { title: 'URL & 소셜', icon: 'fas fa-link', color: '#8b5cf6', fields: [
           ['필수', '#22c55e', 'Production URL', '실제 도메인'],
