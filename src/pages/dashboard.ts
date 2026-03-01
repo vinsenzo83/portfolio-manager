@@ -7,6 +7,7 @@ export function dashboardPage(): string {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blockchain Portfolio Manager</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b82f6'/><text x='16' y='22' font-size='18' text-anchor='middle' fill='white'>📊</text></svg>">
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1283,8 +1284,8 @@ var shData = JSON.parse(localStorage.getItem(SH_KEY) || 'null') || SH_DEF.map(fu
 // localStorage 에 이전 값이 캐시되어 있어도 토큰 정보는 항상 최신 서버 데이터를 사용합니다.
 ;(function(){
   var ST = ${JSON.stringify(SHEET_TOKENS.map(t => ({ id: t.sheetId, tokenAddr: t.tokenAddr, tokenKey: t.tokenKey })))};
-  ST.forEach(function(st: {id:number, tokenAddr:string, tokenKey:string}){
-    var row = shData.find(function(r: any){return r.id === st.id;});
+  ST.forEach(function(st){
+    var row = shData.find(function(r){return r.id === st.id;});
     if(row){ row.tokenAddr = st.tokenAddr; row.tokenKey = st.tokenKey; }
   });
 })();
