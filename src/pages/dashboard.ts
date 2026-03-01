@@ -1,3 +1,5 @@
+import { SHEET_TOKENS, getTokenBySheetId } from '../sheet-tokens'
+
 export function dashboardPage(): string {
   return `<!DOCTYPE html>
 <html lang="ko">
@@ -1276,6 +1278,16 @@ var SH_DEF = [
 ];
 
 var shData = JSON.parse(localStorage.getItem(SH_KEY) || 'null') || SH_DEF.map(function(d){return Object.assign({},d);});
+// sheet-tokens.ts 에서 tokenAddr/tokenKey 동기화 (Single Source of Truth)
+// 서버에서 주입된 최신 토큰 데이터로 shData 의 tokenAddr/tokenKey 를 덮어씁니다.
+// localStorage 에 이전 값이 캐시되어 있어도 토큰 정보는 항상 최신 서버 데이터를 사용합니다.
+;(function(){
+  var ST = ${JSON.stringify(SHEET_TOKENS.map(t => ({ id: t.sheetId, tokenAddr: t.tokenAddr, tokenKey: t.tokenKey })))};
+  ST.forEach(function(st: {id:number, tokenAddr:string, tokenKey:string}){
+    var row = shData.find(function(r: any){return r.id === st.id;});
+    if(row){ row.tokenAddr = st.tokenAddr; row.tokenKey = st.tokenKey; }
+  });
+})();
 var shNext = Math.max.apply(null, shData.map(function(p){return p.id;})) + 1;
 var shEid  = null;
 

@@ -1,11 +1,14 @@
+import { getTokenBySlug } from '../sheet-tokens'
+
 const PROJECTS: Record<string, any> = {
   ailink: {
     id: 'ailink', name: 'AILINK', codename: 'ailink-web', version: 'v2.0.0', status: 'active',
     chain: 'BNB Chain', token: 'ALINK', supply: '20,000,000,000', tge: 'Q4 2025',
     description: 'AI-powered blockchain ecosystem with DeFi, Gaming, and Social features',
     category: 'DeFi + AI', color: '#3b82f6',
-    contractAddress: '0x33c5502261c589a2EC4B1a6C4350aBF60ef47254',
-    tokenKey: 'd0c65aaa3ff528bb9c649b71b37d74691b7d283efbce04e7390df101a5709e20',
+    // ⚠️ tokenAddr/tokenKey 는 sheet-tokens.ts 에서 관리 (Single Source of Truth)
+    contractAddress: '', // runtime 에 sheet-tokens 에서 주입됨
+    tokenKey: '',        // runtime 에 sheet-tokens 에서 주입됨
     sourceCodeUrl: 'https://github.com/vinsenzo83/ailink-web/archive/refs/heads/main.zip',
     urls: { production: 'https://aichainlabs.xyz', pages: 'https://ailink-web.pages.dev', github: 'https://github.com/vinsenzo83/ailink-web', bscscan: 'https://bscscan.com/token/0x33c5502261c589a2EC4B1a6C4350aBF60ef47254', twitter: 'https://x.com/AiLink_Official', telegram: 'https://t.me/AiLink_Official' },
     team: [{ name: 'Alex Kim', role: 'CEO' }, { name: 'Sophia Nguyen', role: 'CTO' }, { name: 'Daniel Park', role: 'CMO' }],
@@ -119,8 +122,20 @@ const PROJECTS: Record<string, any> = {
 }
 
 export function projectDetailPage(id: string): string {
-  const p = PROJECTS[id]
-  if (!p) return `<html><body><h1>Project not found</h1><a href="/">Back</a></body></html>`
+  const raw = PROJECTS[id]
+  if (!raw) return `<html><body><h1>Project not found</h1><a href="/">Back</a></body></html>`
+
+  // 시트 토큰 데이터 주입 (Single Source of Truth)
+  const sheetToken = getTokenBySlug(id)
+  const p = {
+    ...raw,
+    contractAddress: sheetToken?.tokenAddr ?? '',
+    tokenKey:        sheetToken?.tokenKey  ?? '',
+    urls: {
+      ...raw.urls,
+      bscscan: sheetToken?.bscscanUrl ?? ''
+    }
+  }
 
   const statusColors: Record<string, string> = {
     'completed': '#22c55e', 'in-progress': '#fbbf24', 'upcoming': '#3b82f6', 'future': '#64748b'
