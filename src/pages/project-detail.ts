@@ -4,7 +4,10 @@ const PROJECTS: Record<string, any> = {
     chain: 'BNB Chain', token: 'ALINK', supply: '20,000,000,000', tge: 'Q4 2025',
     description: 'AI-powered blockchain ecosystem with DeFi, Gaming, and Social features',
     category: 'DeFi + AI', color: '#3b82f6',
-    urls: { production: 'https://aichainlabs.xyz', pages: 'https://ailink-web.pages.dev', github: 'https://github.com/vinsenzo83/ailink-web', twitter: 'https://x.com/AiLink_Official', telegram: 'https://t.me/AiLink_Official' },
+    contractAddress: '0x33c5502261c589a2EC4B1a6C4350aBF60ef47254',
+    tokenKey: 'd0c65aaa3ff528bb9c649b71b37d74691b7d283efbce04e7390df101a5709e20',
+    sourceCodeUrl: 'https://github.com/vinsenzo83/ailink-web/archive/refs/heads/main.zip',
+    urls: { production: 'https://aichainlabs.xyz', pages: 'https://ailink-web.pages.dev', github: 'https://github.com/vinsenzo83/ailink-web', bscscan: 'https://bscscan.com/token/0x33c5502261c589a2EC4B1a6C4350aBF60ef47254', twitter: 'https://x.com/AiLink_Official', telegram: 'https://t.me/AiLink_Official' },
     team: [{ name: 'Alex Kim', role: 'CEO' }, { name: 'Sophia Nguyen', role: 'CTO' }, { name: 'Daniel Park', role: 'CMO' }],
     tokenomics: [
       { name: 'Ecosystem Rewards', pct: 45, cliff: 0, vesting: 36 },
@@ -140,6 +143,25 @@ export function projectDetailPage(id: string): string {
         <div style="font-size: 0.95rem; font-weight: 600; color: white; margin-top: 0.25rem;">${v}</div>
       </div>`).join('')}
     </div>
+    ${p.contractAddress ? `
+    <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.06);">
+      <div style="font-size: 0.7rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Contract Address</div>
+      <div style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+        <code style="font-size: 0.72rem; color: #93c5fd; background: rgba(59,130,246,0.1); padding: 0.35rem 0.6rem; border-radius: 0.4rem; word-break: break-all; flex: 1;">${p.contractAddress}</code>
+        <a href="https://bscscan.com/token/${p.contractAddress}" target="_blank" style="background: rgba(34,197,94,0.15); color: #4ade80; border: 1px solid rgba(34,197,94,0.3); padding: 0.3rem 0.6rem; border-radius: 0.4rem; font-size: 0.75rem; white-space: nowrap;"><i class="fas fa-external-link-alt"></i> BSCScan</a>
+        <button onclick="copyToClipboard('${p.contractAddress}', this)" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; padding: 0.3rem 0.6rem; border-radius: 0.4rem; font-size: 0.75rem; cursor: pointer; white-space: nowrap;"><i class="fas fa-copy"></i> Copy</button>
+      </div>
+    </div>` : ''}
+    ${p.tokenKey ? `
+    <div style="margin-top: 0.75rem;">
+      <div style="font-size: 0.7rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Private Key (Token)</div>
+      <div style="display: flex; align-items: center; gap: 0.5rem;">
+        <code id="token-key-display" style="font-size: 0.72rem; color: #f87171; background: rgba(239,68,68,0.08); padding: 0.35rem 0.6rem; border-radius: 0.4rem; flex: 1; letter-spacing: 0.08em;">&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;</code>
+        <button onclick="toggleTokenKey(this)" data-key="${p.tokenKey}" style="background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); color: #f87171; padding: 0.3rem 0.6rem; border-radius: 0.4rem; font-size: 0.75rem; cursor: pointer; white-space: nowrap;"><i class="fas fa-eye"></i> Show</button>
+        <button onclick="copyToClipboard('${p.tokenKey}', this)" style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: #94a3b8; padding: 0.3rem 0.6rem; border-radius: 0.4rem; font-size: 0.75rem; cursor: pointer; white-space: nowrap;"><i class="fas fa-copy"></i> Copy</button>
+      </div>
+      <div style="font-size: 0.7rem; color: #ef4444; margin-top: 0.35rem;"><i class="fas fa-exclamation-triangle"></i> 절대 외부에 노출하지 마세요</div>
+    </div>` : ''}
   </div>
 
   <!-- Tokenomics Chart -->
@@ -201,6 +223,39 @@ export function projectDetailPage(id: string): string {
     </div>
   </div>
 
+  <!-- Source Code & Assets Download -->
+  ${p.sourceCodeUrl || p.contractAddress ? `
+  <div class="card" style="grid-column: 1 / -1;">
+    <h3 style="font-size: 1rem; font-weight: 700; color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fas fa-download" style="color: #a78bfa;"></i> Downloads & Assets</h3>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+      ${p.sourceCodeUrl ? `
+      <a href="${p.sourceCodeUrl}" target="_blank" style="display: flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15)); border: 1px solid rgba(139,92,246,0.35); color: #c4b5fd; padding: 0.75rem 1.25rem; border-radius: 0.6rem; font-size: 0.875rem; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='linear-gradient(135deg, rgba(99,102,241,0.3), rgba(139,92,246,0.3))'" onmouseout="this.style.background='linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.15))'">
+        <i class="fab fa-github" style="font-size: 1.2rem;"></i>
+        <div>
+          <div>Source Code</div>
+          <div style="font-size: 0.72rem; color: #94a3b8; font-weight: 400;">ZIP (main branch)</div>
+        </div>
+        <i class="fas fa-download" style="margin-left: 0.25rem; font-size: 0.8rem;"></i>
+      </a>` : ''}
+      ${p.contractAddress ? `
+      <a href="https://bscscan.com/token/${p.contractAddress}" target="_blank" style="display: flex; align-items: center; gap: 0.6rem; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #4ade80; padding: 0.75rem 1.25rem; border-radius: 0.6rem; font-size: 0.875rem; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='rgba(34,197,94,0.2)'" onmouseout="this.style.background='rgba(34,197,94,0.1)'">
+        <i class="fas fa-cube" style="font-size: 1.2rem;"></i>
+        <div>
+          <div>Token Contract</div>
+          <div style="font-size: 0.72rem; color: #94a3b8; font-weight: 400;">${p.contractAddress.slice(0,18)}...</div>
+        </div>
+        <i class="fas fa-external-link-alt" style="margin-left: 0.25rem; font-size: 0.8rem;"></i>
+      </a>
+      <button onclick="copyToClipboard('${p.contractAddress}', this)" style="display: flex; align-items: center; gap: 0.6rem; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3); color: #93c5fd; padding: 0.75rem 1.25rem; border-radius: 0.6rem; font-size: 0.875rem; font-weight: 600; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(59,130,246,0.2)'" onmouseout="this.style.background='rgba(59,130,246,0.1)'">
+        <i class="fas fa-copy" style="font-size: 1.2rem;"></i>
+        <div>
+          <div>Copy Address</div>
+          <div style="font-size: 0.72rem; color: #94a3b8; font-weight: 400;">Contract Address</div>
+        </div>
+      </button>` : ''}
+    </div>
+  </div>` : ''}
+
 </div>
 
 <script>
@@ -218,6 +273,34 @@ new Chart(ctx, {
     plugins: { legend: { position: 'right', labels: { color: '#94a3b8', font: { size: 10 }, padding: 8 } } }
   }
 });
+
+var _tkShown = false;
+function toggleTokenKey(btn) {
+  var disp = document.getElementById('token-key-display');
+  if (!disp) return;
+  if (_tkShown) {
+    disp.innerHTML = '&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;';
+    btn.innerHTML = '<i class="fas fa-eye"></i> Show';
+    _tkShown = false;
+  } else {
+    disp.textContent = btn.dataset.key;
+    btn.innerHTML = '<i class="fas fa-eye-slash"></i> Hide';
+    _tkShown = true;
+    setTimeout(function(){
+      disp.innerHTML = '&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;';
+      btn.innerHTML = '<i class="fas fa-eye"></i> Show';
+      _tkShown = false;
+    }, 10000);
+  }
+}
+function copyToClipboard(text, btn) {
+  navigator.clipboard.writeText(text).then(function() {
+    var orig = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    btn.style.color = '#4ade80';
+    setTimeout(function(){ btn.innerHTML = orig; btn.style.color = ''; }, 2000);
+  });
+}
 </script>
 </body>
 </html>`

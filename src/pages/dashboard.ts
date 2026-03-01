@@ -197,7 +197,7 @@ export function dashboardPage(): string {
     .sh-sn { font-size: .95rem; font-weight: 700; }
     .sh-sl { font-size: .62rem; color: #64748b; text-transform: uppercase; letter-spacing: .04em; }
 
-    .sh-wrap { overflow-x: auto; overflow-y: auto; max-height: calc(100vh - 220px); border-radius: .5rem; border: 1px solid rgba(255,255,255,.07); }
+    .sh-wrap { overflow-x: auto; overflow-y: auto; max-height: calc(100vh - 180px); border-radius: .5rem; border: 1px solid rgba(255,255,255,.07); }
     .sh-table { border-collapse: collapse; width: 100%; }
     .sh-table thead { position: sticky; top: 0; z-index: 10; }
     .sh-grp th {
@@ -287,7 +287,7 @@ export function dashboardPage(): string {
 
 <!-- Top Nav -->
 <nav style="background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px);">
-  <div style="max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px;">
+  <div style="max-width: 100%; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px;">
     <div style="display: flex; align-items: center; gap: 0.75rem;">
       <div style="width: 36px; height: 36px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
         <i class="fas fa-sitemap" style="color: white; font-size: 0.875rem;"></i>
@@ -304,7 +304,7 @@ export function dashboardPage(): string {
 </nav>
 
 <!-- Main Layout -->
-<div style="max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem;">
+<div style="max-width: 100%; margin: 0 auto; padding: 1rem 1rem;">
 
   <!-- Tab Navigation -->
   <div style="display: flex; gap: 0.5rem; margin-bottom: 2rem; flex-wrap: wrap;" id="tab-nav">
@@ -729,6 +729,20 @@ export function dashboardPage(): string {
 
   <!-- ============ SHEET TAB ============ -->
   <div id="tab-sheet" class="tab-content" style="display:none;">
+    <div id="sh-col-mgr" style="display:none;background:rgba(99,102,241,.08);border:1px solid rgba(99,102,241,.25);border-radius:.6rem;padding:.8rem 1rem;margin-bottom:.75rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.6rem;">
+        <span style="font-size:.8rem;font-weight:700;color:#a5b4fc;"><i class="fas fa-columns"></i> 카테고리 관리</span>
+        <button onclick="shHideMgr()" style="background:none;border:none;color:#94a3b8;cursor:pointer;font-size:1rem;">&#x2715;</button>
+      </div>
+      <div id="sh-col-list" style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.7rem;"></div>
+      <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap;">
+        <input id="sh-new-col-key" placeholder="key (영문)" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:.35rem;padding:.28rem .6rem;color:#e2e8f0;font-size:.78rem;outline:none;width:110px;">
+        <input id="sh-new-col-h" placeholder="헤더명" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:.35rem;padding:.28rem .6rem;color:#e2e8f0;font-size:.78rem;outline:none;width:100px;">
+        <select id="sh-new-col-g" style="background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:.35rem;padding:.28rem .6rem;color:#e2e8f0;font-size:.78rem;outline:none;"></select>
+        <button onclick="shAddCol()" class="sh-btn-primary" style="padding:.28rem .7rem;font-size:.75rem;"><i class="fas fa-plus"></i> 컬럼 추가</button>
+        <button onclick="shAddGroup()" class="sh-btn-ghost" style="padding:.28rem .7rem;font-size:.75rem;"><i class="fas fa-folder-plus"></i> 그룹 추가</button>
+      </div>
+    </div>
     <div id="sh-app"></div>
   </div>
 
@@ -963,6 +977,7 @@ function shRender(data) {
      + '</select>';
 
   h += '<button onclick="shCSV()" class="sh-btn-ghost"><i class="fas fa-download"></i> CSV</button>';
+  h += '<button onclick="shShowMgr()" class="sh-btn-ghost"><i class="fas fa-columns"></i> 카테고리</button>';
   h += '<button onclick="shAdd()" class="sh-btn-primary"><i class="fas fa-plus"></i> 추가</button>';
 
   /* section */
@@ -1082,6 +1097,103 @@ function shDel(id) {
   shPersist();
   shRender();
   shToast('삭제 완료');
+}
+
+/* -- CATEGORY MANAGER -- */
+function shShowMgr() {
+  var mgr = document.getElementById('sh-col-mgr');
+  if (!mgr) return;
+  mgr.style.display = 'block';
+  shRefreshMgr();
+}
+function shHideMgr() {
+  var mgr = document.getElementById('sh-col-mgr');
+  if (mgr) mgr.style.display = 'none';
+}
+function shRefreshMgr() {
+  var list = document.getElementById('sh-col-list');
+  if (!list) return;
+  var h = '';
+  for (var i = 0; i < SH_COLS.length; i++) {
+    var col = SH_COLS[i];
+    var gc = SH_GCOL[col.g] || '#94a3b8';
+    h += '<span style="display:inline-flex;align-items:center;gap:.3rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:.35rem;padding:.22rem .55rem;font-size:.72rem;color:#e2e8f0;">'
+       + '<span style="width:7px;height:7px;border-radius:50%;background:'+gc+';"></span>'
+       + col.h
+       + ' <button onclick="shDelCol('+i+')" style="background:none;border:none;color:#f87171;cursor:pointer;font-size:.7rem;line-height:1;padding:0 0 0 2px;" title="컬럼 삭제">&#x2715;</button>'
+       + '</span>';
+  }
+  list.innerHTML = h;
+  /* group select refresh */
+  var gSel = document.getElementById('sh-new-col-g');
+  if (gSel) {
+    var groups = [];
+    var done = {};
+    for (var j = 0; j < SH_COLS.length; j++) {
+      var g = SH_COLS[j].g;
+      if (!done[g]) { done[g]=1; groups.push(g); }
+    }
+    var sOpts = '';
+    for (var k = 0; k < groups.length; k++) sOpts += '<option value="'+groups[k]+'">'+groups[k]+'</option>';
+    gSel.innerHTML = sOpts;
+  }
+}
+function shDelCol(idx) {
+  if (idx < 0 || idx >= SH_COLS.length) return;
+  var col = SH_COLS[idx];
+  if (!confirm('"'+col.h+'" 컬럼을 삭제하시겠습니까? (데이터는 유지됩니다)')) return;
+  SH_COLS.splice(idx, 1);
+  shToast('컬럼 삭제: ' + col.h);
+  shRefreshMgr();
+  shRender();
+  shRebuildModal();
+}
+function shAddCol() {
+  var keyEl = document.getElementById('sh-new-col-key');
+  var hEl   = document.getElementById('sh-new-col-h');
+  var gEl   = document.getElementById('sh-new-col-g');
+  if (!keyEl || !hEl || !gEl) return;
+  var key = keyEl.value.trim().replace(/\s+/g,'_').replace(/[^a-zA-Z0-9_]/g,'');
+  var hdr = hEl.value.trim();
+  var grp = gEl.value;
+  if (!key || !hdr) { shToast('key와 헤더명을 입력하세요', true); return; }
+  if (SH_COLS.some(function(c){return c.k===key;})) { shToast('이미 존재하는 key입니다', true); return; }
+  SH_COLS.push({k:key, h:hdr, g:grp, w:110});
+  keyEl.value = ''; hEl.value = '';
+  shToast('컬럼 추가: ' + hdr);
+  shRefreshMgr();
+  shRender();
+  shRebuildModal();
+}
+function shAddGroup() {
+  var name = prompt('새 그룹명을 입력하세요:');
+  if (!name || !name.trim()) return;
+  name = name.trim();
+  if (SH_GCOL[name]) { shToast('이미 존재하는 그룹입니다', true); return; }
+  var colors = ['#ec4899','#14b8a6','#f97316','#a855f7','#84cc16'];
+  SH_GCOL[name] = colors[Object.keys(SH_GCOL).length % colors.length];
+  shToast('그룹 추가: ' + name);
+  shRefreshMgr();
+}
+function shRebuildModal() {
+  var mBody = document.getElementById('sh-modal-fields');
+  if (!mBody) return;
+  var lastG = null;
+  var fHtml = '';
+  for (var i = 0; i < SH_COLS.length; i++) {
+    var col = SH_COLS[i];
+    if (col.g !== lastG) {
+      var gc = SH_GCOL[col.g] || '#94a3b8';
+      fHtml += '<div class="sh-field-group-head" style="color:'+gc+'"><i class="fas fa-circle" style="font-size:.4rem;margin-right:.4rem"></i>'+col.g+'</div>';
+      lastG = col.g;
+    }
+    var isPass = col.k.toLowerCase().indexOf('pass') >= 0 || col.k === 'tokenKey';
+    fHtml += '<div class="sh-field">'
+           + '<label>'+col.h+'</label>'
+           + '<input type="'+(isPass?'password':'text')+'" id="sf-'+col.k+'" placeholder="'+col.h+'">'
+           + '</div>';
+  }
+  mBody.innerHTML = fHtml;
 }
 
 /* -- CSV  -- */
