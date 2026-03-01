@@ -655,6 +655,147 @@ export function dashboardPage(): string {
       </div>
     </div>
 
+    <!-- ⚡ DESIGN INDEPENDENCE RULE -->
+    <div style="background: linear-gradient(135deg, rgba(239,68,68,0.1), rgba(239,68,68,0.03)); border: 2px solid rgba(239,68,68,0.5); border-radius: 1rem; padding: 1.75rem; margin-bottom: 1.5rem; position: relative; overflow: hidden;" id="design-rule-banner">
+      <div style="position:absolute;top:0;right:0;width:200px;height:200px;background:radial-gradient(circle,rgba(239,68,68,0.08),transparent);pointer-events:none;"></div>
+      <!-- 헤더 -->
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;">
+        <div style="width:42px;height:42px;background:rgba(239,68,68,0.15);border:1.5px solid rgba(239,68,68,0.5);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="fas fa-ban" style="color:#ef4444;font-size:1.1rem;"></i>
+        </div>
+        <div>
+          <h3 style="font-size:1.1rem;font-weight:800;color:#ef4444;margin-bottom:2px;letter-spacing:-0.3px;">⚠️ 핵심 원칙: 절대 같은 디자인은 안된다</h3>
+          <p style="font-size:0.78rem;color:#94a3b8;">각 프로젝트는 서로 다른 개발자가 독립적으로 만든 것처럼 보여야 한다</p>
+        </div>
+      </div>
+
+      <!-- 금지 사항 vs 권장 사항 -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.25rem;">
+        <!-- 금지 -->
+        <div style="background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-radius:0.75rem;padding:1rem;">
+          <div style="font-size:0.75rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem;">
+            <i class="fas fa-times-circle"></i> 절대 금지 사항
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            ${[
+              '동일한 Hero 레이아웃 구조 (같은 그리드, 같은 타이포그래피)',
+              '동일한 색상 팔레트 (blue+mint, purple+pink 등 반복 금지)',
+              '동일한 CSS 클래스명 사용 (glass-card, gradient-text 등)',
+              '동일한 섹션 순서 & 멘트 (How It Works, Core Features 등)',
+              '동일한 카드 컴포넌트 패턴 (rounded glass card 반복)',
+              '같은 폰트 조합 (Inter+Manrope를 모든 프로젝트에 사용)',
+              '같은 버튼 스타일 (gradient, rounded 반복)',
+            ].map(t => `
+            <div style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.78rem;color:#fca5a5;">
+              <i class="fas fa-times" style="color:#ef4444;margin-top:2px;flex-shrink:0;font-size:0.7rem;"></i>
+              <span>${t}</span>
+            </div>`).join('')}
+          </div>
+        </div>
+
+        <!-- 권장 -->
+        <div style="background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.2);border-radius:0.75rem;padding:1rem;">
+          <div style="font-size:0.75rem;font-weight:700;color:#22c55e;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem;">
+            <i class="fas fa-check-circle"></i> 필수 차별화 요소
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            ${[
+              '완전히 다른 색상 시스템 (primary accent 색상 반드시 상이)',
+              '다른 폰트 패밀리 조합 (Space Grotesk, Clash Display, Syne 등)',
+              '다른 레이아웃 패턴 (타임라인, 수평스크롤, 스플릿, 터미널)',
+              '다른 카드 스타일 (sharp corners, border-only, asymmetric)',
+              '다른 섹션 헤드라인 멘트 & 아이코노그래피',
+              '다른 애니메이션 방향 (fadeUp vs slideLeft vs zoomIn)',
+              '다른 Hero 패턴 (데모패널, 파티클, 3D효과, 터미널)',
+            ].map(t => `
+            <div style="display:flex;align-items:flex-start;gap:0.5rem;font-size:0.78rem;color:#86efac;">
+              <i class="fas fa-check" style="color:#22c55e;margin-top:2px;flex-shrink:0;font-size:0.7rem;"></i>
+              <span>${t}</span>
+            </div>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- 프로젝트별 디자인 시스템 현황 -->
+      <div style="margin-bottom:1.25rem;">
+        <div style="font-size:0.75rem;font-weight:700;color:#e2e8f0;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem;">
+          <i class="fas fa-palette" style="color:#a78bfa;"></i> 프로젝트별 디자인 시스템 현황
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:0.75rem;">
+          ${[
+            {
+              name:'AILINK', color:'#3b82f6',
+              font:'Inter + Manrope', accent:'Blue #3b82f6 + Mint #10b981',
+              layout:'Rounded glass cards, gradient hero', style:'Navy dark, smooth curves',
+              status:'active', hero:'Animated grid + floating cards'
+            },
+            {
+              name:'ZENTARAI', color:'#10b981',
+              font:'Space Grotesk + Space Mono', accent:'Emerald #10b981 + Cyan #06b6d4',
+              layout:'Sharp terminal cards, border-only', style:'Pure black, neon signals',
+              status:'active', hero:'Live signal terminal demo panel'
+            },
+            {
+              name:'DaVinci AI', color:'#8b5cf6',
+              font:'미정 (Clash Display 권장)', accent:'Purple #8b5cf6 (NFT/AI 컨셉)',
+              layout:'미정 (Asymmetric grid 권장)', style:'미정',
+              status:'planned', hero:'미정 (Canvas/3D 권장)'
+            },
+          ].map(p => `
+          <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(${p.color === '#3b82f6' ? '59,130,246' : p.color === '#10b981' ? '16,185,129' : '139,92,246'},0.25);border-radius:0.75rem;padding:0.875rem;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:0;left:0;width:3px;height:100%;background:${p.color};"></div>
+            <div style="padding-left:0.625rem;">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
+                <span style="font-weight:700;color:white;font-size:0.9rem;">${p.name}</span>
+                <span style="font-size:0.65rem;padding:2px 8px;border-radius:99px;background:rgba(${p.status === 'active' ? '34,197,94' : '148,163,184'},0.15);color:${p.status === 'active' ? '#22c55e' : '#94a3b8'};border:1px solid rgba(${p.status === 'active' ? '34,197,94' : '148,163,184'},0.3);">${p.status === 'active' ? '✓ 구현완료' : '미정'}</span>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:3px;">
+                <div style="font-size:0.72rem;"><span style="color:#64748b;">폰트: </span><span style="color:#e2e8f0;">${p.font}</span></div>
+                <div style="font-size:0.72rem;"><span style="color:#64748b;">Accent: </span><span style="color:${p.color};">${p.accent}</span></div>
+                <div style="font-size:0.72rem;"><span style="color:#64748b;">레이아웃: </span><span style="color:#94a3b8;">${p.layout}</span></div>
+                <div style="font-size:0.72rem;"><span style="color:#64748b;">Hero: </span><span style="color:#94a3b8;">${p.hero}</span></div>
+              </div>
+            </div>
+          </div>`).join('')}
+        </div>
+      </div>
+
+      <!-- 섹션 멘트 차별화 가이드 -->
+      <div>
+        <div style="font-size:0.75rem;font-weight:700;color:#e2e8f0;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.75rem;">
+          <i class="fas fa-font" style="color:#fbbf24;"></i> 섹션별 멘트 차별화 규칙 (같은 표현 재사용 금지)
+        </div>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.75rem;">
+            <thead>
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+                <th style="text-align:left;padding:0.5rem 0.75rem;color:#64748b;font-weight:600;white-space:nowrap;">섹션</th>
+                <th style="text-align:left;padding:0.5rem 0.75rem;color:#3b82f6;font-weight:600;white-space:nowrap;"><i class="fas fa-link" style="font-size:0.7rem;"></i> AILINK</th>
+                <th style="text-align:left;padding:0.5rem 0.75rem;color:#10b981;font-weight:600;white-space:nowrap;"><i class="fas fa-brain" style="font-size:0.7rem;"></i> ZENTARAI</th>
+                <th style="text-align:left;padding:0.5rem 0.75rem;color:#8b5cf6;font-weight:600;white-space:nowrap;"><i class="fas fa-palette" style="font-size:0.7rem;"></i> DaVinci AI</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${[
+                ['Hero 태그라인', 'Build. Link. Empower.', 'predict outcomes.', '(미정) Create. Imagine. Own.'],
+                ['메인 섹션명', 'How It Works', 'System Architecture', '(미정) How Agents Think'],
+                ['기능 섹션명', 'Core Features', 'Signal Intelligence', '(미정) AI Studio'],
+                ['토큰 섹션명', 'Tokenomics · ALINK Economy', 'utility drives the flywheel.', '(미정) Value Architecture'],
+                ['커뮤니티 섹션', 'Community & DAO', 'network nodes', '(미정) Creator Collective'],
+                ['CTA 문구', 'Join the Ecosystem', 'init_wallet', '(미정) Start Creating'],
+              ].map(([section, ailink, zentarai, davinci]) => `
+              <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                <td style="padding:0.45rem 0.75rem;color:#94a3b8;white-space:nowrap;">${section}</td>
+                <td style="padding:0.45rem 0.75rem;color:#93c5fd;">${ailink}</td>
+                <td style="padding:0.45rem 0.75rem;color:#6ee7b7;">${zentarai}</td>
+                <td style="padding:0.45rem 0.75rem;color:#c4b5fd;opacity:0.6;">${davinci}</td>
+              </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <!-- Common Components -->
     <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem;">
       <h3 style="font-size: 1rem; font-weight: 700; color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
