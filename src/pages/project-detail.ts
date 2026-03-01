@@ -72,7 +72,7 @@ const PROJECTS: Record<string, any> = {
     chain: 'BNB Chain', token: 'ZNTR', supply: '10,000,000,000', tge: 'Q2 2026',
     description: 'AI-powered predictive signal intelligence platform — processes 500+ on-chain & off-chain data streams to deliver sub-second trading signals',
     category: 'AI + DeFi Signal', color: '#10b981',
-    contractAddress: '0x33c5502261c589a2EC4B1a6C4350aBF60ef47254',
+    contractAddress: '',  // 토큰 미발행 — TGE Q2 2026 이후 업데이트
     tokenKey: '',
     sourceCodeUrl: 'https://github.com/vinsenzo83/zentarai/archive/refs/heads/main.zip',
     urls: {
@@ -257,7 +257,7 @@ export function projectDetailPage(id: string): string {
   </div>
 
   <!-- Downloads & Assets Card -->
-  ${(p.sourceCodeUrl || p.contractAddress || p.tokenKey) ? `
+  ${(p.sourceCodeUrl || p.contractAddress || p.tokenKey || p.tge) ? `
   <div class="card" style="grid-column: 1 / -1; border-color: rgba(139,92,246,0.25);">
     <h3 style="font-size: 1rem; font-weight: 700; color: white; margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
       <i class="fas fa-file-archive" style="color: #a78bfa;"></i> Downloads &amp; Assets
@@ -276,7 +276,7 @@ export function projectDetailPage(id: string): string {
       </div>` : ''}
 
       ${p.contractAddress ? `
-      <!-- Token Address -->
+      <!-- Token Address (발행 완료) -->
       <div style="background: rgba(34,197,94,0.06); border: 1px solid rgba(34,197,94,0.2); border-radius: 0.75rem; padding: 1rem;">
         <div style="font-size: 0.7rem; color: #4ade80; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; font-weight: 700;"><i class="fas fa-cube"></i> Token Address (BEP-20)</div>
         <code style="display: block; font-size: 0.72rem; color: #86efac; background: rgba(34,197,94,0.08); padding: 0.5rem 0.7rem; border-radius: 0.4rem; word-break: break-all; margin-bottom: 0.65rem; letter-spacing: 0.02em;">${p.contractAddress}</code>
@@ -290,7 +290,13 @@ export function projectDetailPage(id: string): string {
             <i class="fas fa-copy"></i> Copy
           </button>
         </div>
-      </div>` : ''}
+      </div>` : `
+      <!-- Token Address (미발행) -->
+      <div style="background: rgba(251,191,36,0.04); border: 1px solid rgba(251,191,36,0.2); border-radius: 0.75rem; padding: 1rem;">
+        <div style="font-size: 0.7rem; color: #fbbf24; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.6rem; font-weight: 700;"><i class="fas fa-clock"></i> Token Address (Pre-TGE)</div>
+        <div style="font-size: 0.8rem; color: #94a3b8; margin-bottom: 0.5rem;">토큰 미발행 상태입니다. TGE(${p.tge}) 이후 컨트랙트 주소가 이 곳에 업데이트됩니다.</div>
+        <span style="font-family: monospace; font-size: 0.7rem; color: #fbbf24; background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25); padding: 2px 10px;">PRE-TGE · ${p.tge}</span>
+      </div>`}
 
       ${p.tokenKey ? `
       <!-- Token Key -->
