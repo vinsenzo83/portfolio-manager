@@ -285,7 +285,27 @@ export function dashboardPage(): string {
 </head>
 <body>
 
-<!-- Top Nav -->
+<!-- ====== PASSWORD GATE ====== -->
+<div id="pw-gate" style="display:none;position:fixed;inset:0;background:#0a0a1a;z-index:99999;display:flex;align-items:center;justify-content:center;">
+  <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(139,92,246,0.4);border-radius:1.25rem;padding:2.5rem 2rem;width:100%;max-width:380px;text-align:center;box-shadow:0 0 60px rgba(139,92,246,0.2);">
+    <div style="width:56px;height:56px;background:linear-gradient(135deg,#3b82f6,#8b5cf6);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+      <i class="fas fa-lock" style="color:white;font-size:1.4rem;"></i>
+    </div>
+    <div style="font-size:1.3rem;font-weight:800;color:white;margin-bottom:0.4rem;">Blockchain Portfolio</div>
+    <div style="font-size:0.85rem;color:#64748b;margin-bottom:1.75rem;">비밀번호를 입력하세요</div>
+    <input id="pw-input" type="password" placeholder="Password"
+      style="width:100%;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:0.6rem;padding:0.7rem 1rem;color:#e2e8f0;font-size:0.95rem;outline:none;margin-bottom:0.75rem;text-align:center;letter-spacing:0.15em;"
+      onkeydown="if(event.key==='Enter')pwLogin()">
+    <div id="pw-err" style="display:none;color:#f87171;font-size:0.8rem;margin-bottom:0.6rem;"><i class="fas fa-exclamation-circle"></i> 비밀번호가 틀렸습니다</div>
+    <button onclick="pwLogin()"
+      style="width:100%;background:linear-gradient(135deg,#3b82f6,#8b5cf6);color:white;border:none;border-radius:0.6rem;padding:0.75rem;font-size:0.95rem;font-weight:700;cursor:pointer;">
+      <i class="fas fa-sign-in-alt"></i> 입력
+    </button>
+  </div>
+</div>
+
+<!-- ====== MAIN CONTENT (hidden until login) ====== -->
+<div id="main-wrap" style="display:none;">
 <nav style="background: rgba(10,10,26,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: sticky; top: 0; z-index: 100; backdrop-filter: blur(12px);">
   <div style="max-width: 100%; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px;">
     <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -753,6 +773,8 @@ export function dashboardPage(): string {
   Blockchain Portfolio Manager · vinsenzo83 · Built with Hono + Cloudflare Pages
 </footer>
 
+</div><!-- end main-wrap -->
+
 <!-- ── Sheet: 편집 모달 ── -->
 <div id="sh-modal" class="sh-modal-bg">
   <div class="sh-modal-box">
@@ -770,6 +792,37 @@ export function dashboardPage(): string {
 <div id="sh-toast" class="sh-toast"></div>
 
 <script>
+/* ====== PASSWORD GATE ====== */
+(function() {
+  var PW = 'rhkdtp00!!';
+  var SK = 'pm_auth';
+  var gate = document.getElementById('pw-gate');
+  var wrap = document.getElementById('main-wrap');
+  if (sessionStorage.getItem(SK) === '1') {
+    gate.style.display = 'none';
+    wrap.style.display = 'block';
+  } else {
+    gate.style.display = 'flex';
+    wrap.style.display = 'none';
+    setTimeout(function(){ var el=document.getElementById('pw-input'); if(el) el.focus(); }, 100);
+  }
+})();
+function pwLogin() {
+  var val = (document.getElementById('pw-input') || {}).value || '';
+  var err = document.getElementById('pw-err');
+  var gate = document.getElementById('pw-gate');
+  var wrap = document.getElementById('main-wrap');
+  if (val === 'rhkdtp00!!') {
+    sessionStorage.setItem('pm_auth', '1');
+    gate.style.display = 'none';
+    wrap.style.display = 'block';
+  } else {
+    if (err) err.style.display = 'block';
+    var inp = document.getElementById('pw-input');
+    if (inp) { inp.value = ''; inp.focus(); }
+  }
+}
+
 /* -- TAB SWITCHER -- */
 function showTab(name, btn) {
   document.querySelectorAll('.tab-content').forEach(function(el) { el.style.display = 'none'; });
@@ -856,20 +909,7 @@ var shEid  = null;
 
 function shPersist() { localStorage.setItem(SH_KEY, JSON.stringify(shData)); }
 
-/* --   -- */
-var PW_MASK = '&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;';
-function shPw(el) {
-  if (el.innerHTML === PW_MASK) {
-    el.textContent = el.dataset.pw;
-    el.style.color = '#e2e8f0';
-    setTimeout(function(){ el.innerHTML = PW_MASK; el.style.color = ''; }, 5000);
-  } else {
-    el.innerHTML = PW_MASK;
-    el.style.color = '';
-  }
-}
-
-/* --   HTML  -- */
+/* -- 한 행 HTML 생성 -- */
 function shRow(p) {
   var esc = function(v){ return (v||'').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); };
   var dash = '<span style="color:#475569">-</span>';
@@ -889,12 +929,12 @@ function shRow(p) {
   /* X */
   h += '<td style="font-weight:600">'+esc(p.xName||'')+'</td>';
   h += '<td>'+(p.xAcc?'<a class="sh-link" href="https://x.com/'+esc(p.xAcc.replace('@',''))+'" target="_blank"><i class="fab fa-x-twitter"></i> '+esc(p.xAcc)+'</a>':dash)+'</td>';
-  h += '<td><span class="sh-pw" onclick="shPw(this)" data-pw="'+esc(p.xPass||'')+'">'+PW_MASK+'</span></td>';
+  h += '<td style="font-family:monospace;font-size:.73rem">'+esc(p.xPass||'')+'</td>';
 
   /* Google */
   h += '<td>'+esc(p.gName||'')+'</td>';
   h += '<td style="color:#60a5fa">'+esc(p.gAcc||'')+'</td>';
-  h += '<td><span class="sh-pw" onclick="shPw(this)" data-pw="'+esc(p.gPass||'')+'">'+PW_MASK+'</span></td>';
+  h += '<td style="font-family:monospace;font-size:.73rem">'+esc(p.gPass||'')+'</td>';
 
   /* Telegram */
   h += '<td>'+esc(p.tgName||'')+'</td>';
@@ -907,7 +947,7 @@ function shRow(p) {
   /* / */
   h += '<td>'+(p.site?'<a class="sh-link" href="https://'+esc(p.site)+'" target="_blank"><i class="fas fa-globe"></i> '+esc(p.site)+'</a>':dash)+'</td>';
   h += '<td style="font-family:monospace;font-size:.67rem">'+(p.tokenAddr?'<a class="sh-link" href="https://bscscan.com/token/'+esc(p.tokenAddr)+'" target="_blank"><i class="fas fa-cube"></i> '+esc(p.tokenAddr.slice(0,10))+'...</a>':dash)+'</td>';
-  h += '<td>'+(p.tokenKey?'<span class="sh-pw" onclick="shPw(this)" data-pw="'+esc(p.tokenKey)+'">'+PW_MASK+'</span>':dash)+'</td>';
+  h += '<td style="font-family:monospace;font-size:.67rem;color:#fca5a5">'+esc(p.tokenKey||'')+'</td>';
 
   /* section */
   h += '<td>'+esc(p.domainEmail||'')+'</td>';
