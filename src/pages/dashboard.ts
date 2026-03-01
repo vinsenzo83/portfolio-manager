@@ -816,9 +816,9 @@ export function dashboardPage(): string {
             },
             {
               name:'DaVinci AI', color:'#8b5cf6',
-              font:'미정 (Clash Display 권장)', accent:'Purple #8b5cf6 (NFT/AI 컨셉)',
-              layout:'미정 (Asymmetric grid 권장)', style:'미정',
-              status:'planned', hero:'미정 (Canvas/3D 권장)'
+              font:'Inter + SF Pro Display (추정)', accent:'Purple #6d28d9 + Violet #8b5cf6',
+              layout:'Section-based scroll, full-width hero', style:'Dark navy, gradient accents, glassmorphism',
+              status:'active', hero:'AI Agent showcase with stat counters'
             },
           ].map(p => `
           <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(${p.color === '#3b82f6' ? '59,130,246' : p.color === '#10b981' ? '16,185,129' : '139,92,246'},0.25);border-radius:0.75rem;padding:0.875rem;position:relative;overflow:hidden;">
@@ -856,12 +856,12 @@ export function dashboardPage(): string {
             </thead>
             <tbody>
               ${[
-                ['Hero 태그라인', 'Build. Link. Empower.', 'predict outcomes.', '(미정) Create. Imagine. Own.'],
-                ['메인 섹션명', 'How It Works', 'System Architecture', '(미정) How Agents Think'],
-                ['기능 섹션명', 'Core Features', 'Signal Intelligence', '(미정) AI Studio'],
-                ['토큰 섹션명', 'Tokenomics · ALINK Economy', 'utility drives the flywheel.', '(미정) Value Architecture'],
-                ['커뮤니티 섹션', 'Community & DAO', 'network nodes', '(미정) Creator Collective'],
-                ['CTA 문구', 'Join the Ecosystem', 'init_wallet', '(미정) Start Creating'],
+                ['Hero 태그라인', 'Build. Link. Empower.', 'predict outcomes.', 'Create. Imagine. Own. (AI Agents)'],
+                ['메인 섹션명', 'How It Works', 'System Architecture', 'How Agents Think'],
+                ['기능 섹션명', 'Core Features', 'Signal Intelligence', 'AI Agent Platform (17+ Agents)'],
+                ['토큰 섹션명', 'Tokenomics · ALINK Economy', 'utility drives the flywheel.', 'Value Architecture · $DAVINCI'],
+                ['커뮤니티 섹션', 'Community & DAO', 'network nodes', 'Creator Collective (8,888+ creators)'],
+                ['CTA 문구', 'Join the Ecosystem', 'init_wallet', 'Start Creating'],
               ].map(([section, ailink, zentarai, davinci]) => `
               <tr style="border-bottom:1px solid rgba(255,255,255,0.04);">
                 <td style="padding:0.45rem 0.75rem;color:#94a3b8;white-space:nowrap;">${section}</td>
@@ -871,6 +871,107 @@ export function dashboardPage(): string {
               </tr>`).join('')}
             </tbody>
           </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- DaVinci AI 사이트 분석 리뷰 -->
+    <div style="background: linear-gradient(135deg, rgba(139,92,246,0.08), rgba(139,92,246,0.02)); border: 1px solid rgba(139,92,246,0.3); border-radius: 1rem; padding: 1.75rem; margin-bottom: 1.5rem;">
+      <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem;">
+        <div style="width:40px;height:40px;background:rgba(139,92,246,0.15);border:1.5px solid rgba(139,92,246,0.4);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <i class="fas fa-magnifying-glass-chart" style="color:#a78bfa;"></i>
+        </div>
+        <div>
+          <h3 style="font-size:1rem;font-weight:700;color:white;margin:0 0 2px;">🔍 DaVinci AI 사이트 분석 — davinciai.io</h3>
+          <p style="font-size:0.75rem;color:#64748b;margin:0;">레퍼런스 분석 · 포트폴리오 참고용 인사이트</p>
+        </div>
+        <a href="https://davinciai.io" target="_blank" style="margin-left:auto;font-size:0.75rem;color:#a78bfa;border:1px solid rgba(139,92,246,0.3);padding:4px 10px;border-radius:6px;white-space:nowrap;">
+          <i class="fas fa-external-link-alt"></i> 사이트 방문
+        </a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-bottom:1.25rem;">
+        ${[
+          {
+            icon:'fas fa-robot', color:'#a78bfa', title:'AI Agent 플랫폼 구조',
+            items:[
+              '17+ 전문 AI 에이전트 (11개 라이브)',
+              '총 324k+ 생성 건수 누적',
+              '8,888+ 크리에이터 유저베이스',
+              'Visio(48.2k) · Genesis(29.3k) · Prism(31.7k)',
+              '에이전트별 독립 사용량 트래킹 공개'
+            ]
+          },
+          {
+            icon:'fas fa-coins', color:'#fbbf24', title:'$DAVINCI 토큰 구조',
+            items:[
+              'BEP-20 · 총 공급량 8.88B',
+              'TGE Q4 2025 · Community 45% (5% TGE, 5년 베스팅)',
+              'Strategic 15% (10% TGE, 3년 베스팅)',
+              'Team 12% (48개월) · Treasury 10% (60개월)',
+              'Artist Fund 5% (36개월)'
+            ]
+          },
+          {
+            icon:'fas fa-paint-brush', color:'#ec4899', title:'UI/UX 디자인 패턴',
+            items:[
+              '다크 네이비 배경 + 퍼플 그래디언트 액센트',
+              '유리모폼(glassmorphism) 카드 스타일',
+              '에이전트 쇼케이스 섹션 — 사용량 수치 강조',
+              '섹션별 스크롤 애니메이션 적용',
+              '팀·파트너 섹션 분리 구성'
+            ]
+          },
+          {
+            icon:'fas fa-code-branch', color:'#22c55e', title:'기술 스택 & 파트너',
+            items:[
+              'OpenAI · Midjourney · Stable Diffusion 통합',
+              'KlingAI · HeyGen · Suno AI 모델',
+              'Tailwind CSS CDN (경고 있음 — 프로덕션 비권장)',
+              '페이지 로딩 12.56s — 최적화 필요',
+              'Partners: BNB Chain, PancakeSwap, Chainlink'
+            ]
+          },
+          {
+            icon:'fas fa-road', color:'#06b6d4', title:'로드맵 5단계',
+            items:[
+              'Phase 1: Genesis & Foundation (2025)',
+              'Phase 2: Agent Platform Launch & TGE',
+              'Phase 3: Ecosystem Expansion',
+              'Phase 4: Multi-Chain & Scale',
+              'Phase 5: Renaissance Protocol (2027+)'
+            ]
+          },
+          {
+            icon:'fas fa-lightbulb', color:'#f97316', title:'우리 프로젝트에 적용할 인사이트',
+            items:[
+              '에이전트/기능별 사용량 수치 공개 → 신뢰도↑',
+              '크리에이터 수 & 생성 건수 실시간 카운터',
+              'AI 모델 파트너십 배지 노출 (OpenAI 등)',
+              '월별 순환공급량 테이블 → ZNTR에도 적용 권장',
+              'Tailwind CDN 대신 빌드 번들 사용 권장'
+            ]
+          },
+        ].map(s => `
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:0.75rem;padding:1rem;">
+          <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.75rem;">
+            <i class="${s.icon}" style="color:${s.color};font-size:0.9rem;"></i>
+            <span style="font-size:0.8rem;font-weight:700;color:#e2e8f0;">${s.title}</span>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;">
+            ${s.items.map(it => `
+            <li style="display:flex;align-items:flex-start;gap:6px;font-size:0.72rem;color:#94a3b8;">
+              <span style="color:${s.color};flex-shrink:0;margin-top:2px;">›</span>${it}
+            </li>`).join('')}
+          </ul>
+        </div>`).join('')}
+      </div>
+
+      <!-- 성능 이슈 경고 -->
+      <div style="background:rgba(251,191,36,0.07);border:1px solid rgba(251,191,36,0.25);border-radius:0.5rem;padding:0.875rem;display:flex;gap:0.75rem;align-items:flex-start;">
+        <i class="fas fa-triangle-exclamation" style="color:#fbbf24;flex-shrink:0;margin-top:2px;"></i>
+        <div style="font-size:0.75rem;color:#fde68a;">
+          <strong>davinciai.io 성능 주의사항:</strong> 페이지 로드 12.56s · Tailwind CDN 프로덕션 사용 경고 · 404 리소스 오류 감지됨 — 우리 프로젝트는 이 문제를 반복하지 않도록 Vite 번들 빌드 및 최적화 CDN 사용 권장
         </div>
       </div>
     </div>

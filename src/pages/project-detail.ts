@@ -66,6 +66,55 @@ const PROJECTS: Record<string, any> = {
     ],
     partners: ['OpenAI', 'BNB Chain', 'PancakeSwap', 'Chainlink', 'IPFS', 'MetaMask', 'WalletConnect'],
     progress: 68
+  },
+  zentarai: {
+    id: 'zentarai', name: 'ZentarAI', codename: 'zentarai', version: 'v1.0.0', status: 'active',
+    chain: 'BNB Chain', token: 'ZNTR', supply: '10,000,000,000', tge: 'Q2 2026',
+    description: 'AI-powered predictive signal intelligence platform — processes 500+ on-chain & off-chain data streams to deliver sub-second trading signals',
+    category: 'AI + DeFi Signal', color: '#10b981',
+    contractAddress: '0x33c5502261c589a2EC4B1a6C4350aBF60ef47254',
+    tokenKey: '',
+    sourceCodeUrl: 'https://github.com/vinsenzo83/zentarai/archive/refs/heads/main.zip',
+    urls: {
+      production: 'https://zentarai.pages.dev',
+      pages: 'https://zentarai.pages.dev',
+      github: 'https://github.com/vinsenzo83/zentarai',
+      twitter: 'https://x.com/intellora_',
+      telegram: 'https://t.me/zentarai_official'
+    },
+    team: [
+      { name: 'Vincent Kim', role: 'CEO & Founder' },
+      { name: 'Elara Shin', role: 'CTO' },
+      { name: 'Max Torres', role: 'Head of ML' },
+      { name: 'Anya Patel', role: 'CMO' }
+    ],
+    tokenomics: [
+      { name: 'Ecosystem Rewards', pct: 40, cliff: 0, vesting: 36 },
+      { name: 'Team & Advisors',   pct: 15, cliff: 12, vesting: 36 },
+      { name: 'Partnerships',      pct: 15, cliff: 3,  vesting: 30 },
+      { name: 'Private Sale',      pct: 15, cliff: 6,  vesting: 18 },
+      { name: 'Protocol Reserve',  pct: 10, cliff: 0,  vesting: 60 },
+      { name: 'Public Sale',       pct: 5,  cliff: 0,  vesting: 0  }
+    ],
+    pages: [
+      { path: '/',           name: 'Home',        status: 'done' },
+      { path: '/login',      name: 'Login',       status: 'done' },
+      { path: '/mypage',     name: 'Dashboard',   status: 'done' },
+      { path: '/vesting',    name: 'Vesting',     status: 'done' },
+      { path: '/whitepaper', name: 'Whitepaper',  status: 'done' },
+      { path: '/privacy',    name: 'Privacy',     status: 'done' },
+      { path: '/terms',      name: 'Terms',       status: 'done' },
+      { path: '/disclaimer', name: 'Disclaimer',  status: 'done' }
+    ],
+    roadmap: [
+      { phase: 'Phase 1 — Genesis',     period: 'Q3 2025',     status: 'completed',   items: ['Website Launch', 'Whitepaper', 'Community Bootstrap'] },
+      { phase: 'Phase 2 — Signal Core', period: 'Q4 2025',     status: 'completed',   items: ['ML Model v1', 'Signal API Beta', '500+ Data Sources'] },
+      { phase: 'Phase 3 — TGE',         period: 'Q1–Q2 2026',  status: 'in-progress', items: ['Token Launch', 'PancakeSwap Listing', 'Dashboard v2'] },
+      { phase: 'Phase 4 — Scale',       period: 'Q3–Q4 2026',  status: 'upcoming',    items: ['Signal SDK', 'Partner Integrations', 'Mobile App'] },
+      { phase: 'Phase 5 — DAO',         period: '2027+',        status: 'future',      items: ['DAO Governance', 'Multi-chain', 'AI-Native Infrastructure'] }
+    ],
+    partners: ['BNB Chain', 'Chainlink', 'PancakeSwap', 'CertiK', 'OKX Web3', 'Google Cloud AI'],
+    progress: 65
   }
 }
 
@@ -107,7 +156,7 @@ export function projectDetailPage(id: string): string {
   </div>
   <div style="display: flex; gap: 0.75rem;">
     <a href="${p.urls.github}" target="_blank" style="color: #94a3b8; font-size: 0.875rem;"><i class="fab fa-github"></i> GitHub</a>
-    <a href="${p.urls.production}" target="_blank" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; padding: 0.35rem 1rem; border-radius: 0.5rem; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-external-link-alt"></i> Live Site</a>
+    <a href="${p.urls.production}" target="_blank" style="background: linear-gradient(135deg, ${p.color}, ${p.color}aa); color: white; padding: 0.35rem 1rem; border-radius: 0.5rem; font-size: 0.8rem; font-weight: 600;"><i class="fas fa-external-link-alt"></i> Live Site</a>
   </div>
 </nav>
 
@@ -116,7 +165,7 @@ export function projectDetailPage(id: string): string {
   <div style="max-width: 1200px; margin: 0 auto;">
     <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; flex-wrap: wrap;">
       <div style="width: 56px; height: 56px; background: ${p.color}30; border: 2px solid ${p.color}60; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: ${p.color};">
-        <i class="fas fa-${id === 'ailink' ? 'link' : 'palette'}"></i>
+        <i class="fas fa-${id === 'ailink' ? 'link' : id === 'zentarai' ? 'brain' : 'palette'}"></i>
       </div>
       <div>
         <h1 style="font-size: 2rem; font-weight: 800; color: white; margin: 0;">${p.name}</h1>
