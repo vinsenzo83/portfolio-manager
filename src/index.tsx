@@ -149,6 +149,65 @@ const PROJECTS_DATA = [
     partners: ['OpenAI', 'BNB Chain', 'PancakeSwap', 'Chainlink', 'IPFS', 'MetaMask', 'WalletConnect'],
     progress: 68,
     color: '#8b5cf6'
+  },
+  {
+    id: 'zentarai',
+    name: 'ZentarAI',
+    codename: 'zentarai',
+    version: 'v1.0.0',
+    status: 'active',
+    chain: 'BNB Chain',
+    token: 'ZNTR',
+    supply: '10,000,000,000',
+    contract: '',
+    tge: 'Q2 2026',
+    description: 'AI-powered predictive intelligence platform — turning real-time signals into decisive ecosystem strategy',
+    category: 'AI + Predictive Intelligence',
+    urls: {
+      production: 'https://zentarai.xyz',
+      pages: 'https://zentarai.pages.dev',
+      github: 'https://github.com/vinsenzo83/zentarai',
+      twitter: 'https://x.com/intellora_',
+      telegram: 'https://t.me/ZentarAI',
+      bscscan: ''
+    },
+    team: [
+      { name: 'Zara Ellison', role: 'CEO & Founder' },
+      { name: 'Kai Mercer', role: 'CTO' },
+      { name: 'Nova Hartwell', role: 'CMO' },
+      { name: 'Eli Thornton', role: 'Head of Research' }
+    ],
+    tokenomics: [
+      { name: 'Ecosystem Rewards', pct: 40, amount: '4,000,000,000', cliff: 0, vesting: 36 },
+      { name: 'Team & Advisors', pct: 15, amount: '1,500,000,000', cliff: 12, vesting: 36 },
+      { name: 'Partnerships', pct: 15, amount: '1,500,000,000', cliff: 3, vesting: 30 },
+      { name: 'Private Sale', pct: 15, amount: '1,500,000,000', cliff: 6, vesting: 18 },
+      { name: 'Protocol Reserve', pct: 10, amount: '1,000,000,000', cliff: 0, vesting: 48 },
+      { name: 'Public Sale', pct: 5, amount: '500,000,000', cliff: 0, vesting: 0 }
+    ],
+    pages: [
+      { path: '/', name: 'Home', status: 'done' },
+      { path: '/login', name: 'Login / Wallet Connect', status: 'done' },
+      { path: '/mypage', name: 'My Dashboard', status: 'done' },
+      { path: '/vesting', name: 'Vesting Schedule', status: 'done' },
+      { path: '/whitepaper', name: 'Whitepaper', status: 'done' },
+      { path: '/privacy', name: 'Privacy Policy', status: 'done' },
+      { path: '/terms', name: 'Terms of Service', status: 'done' },
+      { path: '/disclaimer', name: 'Disclaimer', status: 'done' }
+    ],
+    roadmap: [
+      { phase: 'Phase 1', period: 'Q4 2025 – Q1 2026', status: 'completed', items: ['Core AI signal engine', 'Smart contract audit', 'Community building', 'Website v1.0 launch'] },
+      { phase: 'Phase 2', period: 'Q2 2026', status: 'in-progress', items: ['TGE', 'PancakeSwap listing', 'ZentarAI dashboard beta', 'Signal API v1'] },
+      { phase: 'Phase 3', period: 'Q3–Q4 2026', status: 'upcoming', items: ['AI Prediction marketplace', 'Cross-chain bridge', 'Enterprise SDK', 'CEX listing'] },
+      { phase: 'Phase 4', period: 'Q1 2027+', status: 'future', items: ['ZentarAI L2 data layer', 'Multichain signal feeds', 'AI-native oracle network', 'Mobile app'] }
+    ],
+    techStack: ['Cloudflare Pages', 'Hono v4', 'TypeScript', 'Vite v6', 'Tailwind CSS', 'Chart.js'],
+    partners: ['BNB Chain', 'PancakeSwap', 'Chainlink', 'CertiK', 'Google Cloud AI', 'OKX Web3'],
+    progress: 35,
+    color: '#10b981',
+    sourceCodeUrl: 'https://github.com/vinsenzo83/zentarai/archive/refs/heads/main.zip',
+    contractAddress: '',
+    tokenKey: ''
   }
 ]
 
